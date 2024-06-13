@@ -9,7 +9,7 @@ import avatar from "@/assets/images/avatar.png";
 
 export default function DashboardLayout() {
     return (
-        <div className="w-full h-screen flex overflow-y-hidden">
+        <div className="w-full flex">
             <aside className="w-[20%] h-full z-10 flex flex-col space-y-3 px-4 py-3 shadow-[0_3px_3px_1px_rgba(0,0,0,0.1)]">
                 <div className="pl-3 mb-8">
                     <Logo />
