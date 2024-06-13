@@ -9,12 +9,12 @@ import avatar from "@/assets/images/avatar.png";
 
 export default function DashboardLayout() {
     return (
-        <div className="w-full flex">
-            <aside className="w-[20%] h-full z-10 flex flex-col space-y-3 px-4 py-3 shadow-[0_3px_3px_1px_rgba(0,0,0,0.1)]">
-                <div className="pl-3 mb-8">
+        <div className="w-full h-full flex">
+            <aside className="w-[20%] max-h-full z-10 flex flex-col px-4 py-3 shadow-[0_3px_3px_1px_rgba(0,0,0,0.1)]">
+                <div className="pl-3 mb-10">
                     <Logo />
                 </div>
-                <ul className="h-full flex flex-col space-y-2 ">
+                <ul className="flex flex-col space-y-2 ">
                     {
                         DashboardNavLinks.map(navLink => (
                             <li key={navLink.name}>
@@ -30,7 +30,7 @@ export default function DashboardLayout() {
                         ))
                     }
                 </ul>
-                <div className="w-full h-full pl-3 py-4 flex flex-col justify-between">
+                <div className="w-full h-full pl-3 mt-16 flex flex-col justify-between">
                     <Link to="register-patients" className=" w-[70%] px-4 py-2 bg-primaryBlue text-white font-medium rounded-md text-sm">
                         + Register Patient
                     </Link>
