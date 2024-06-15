@@ -30,7 +30,7 @@ export default function DashboardLayout() {
                         ))
                     }
                 </ul>
-                <div className="w-full h-full pl-3 mt-16 flex flex-col justify-between">
+                <div className="w-full h-full pl-3 mt-16 pb-8 flex flex-col justify-between">
                     <Link to="register-patients" className=" w-[70%] px-4 py-2 bg-primaryBlue text-white font-medium rounded-md text-sm">
                         + Register Patient
                     </Link>

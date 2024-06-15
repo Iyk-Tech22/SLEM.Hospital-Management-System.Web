@@ -1,8 +1,11 @@
 import { DashboardStats } from "@/data/constant";
 import { currencyFormater } from "@/utils/currencyFormater";
+import { AppointmentsTable } from "@/components/AppointmentsTable";
+import { DoctorListTable } from "@/components/DoctorListTable";
+import { FaEllipsisVertical } from 'react-icons/fa6';
 
 
-export default function DashBoard() {
+export default function Dashboard() {
   return (
     <div className="flex flex-col space-y-5">
         <header>
@@ -28,7 +31,7 @@ export default function DashBoard() {
           </ul>
         </header>
         <div className="w-full flex space-x-4 ">
-          <div className="w-[65%] h-80 shadow-md bg-white rounded-md px-6">
+          <div className="w-[62%] h-80 shadow-md bg-white rounded-md px-6">
             <header className="flex justify-between items-center py-3">
               <h2 className="font-bold text-lg text-primaryDarkBlue">Hospital Survey</h2>
               <div className="flex space-x-4 text-sm">
@@ -45,7 +48,7 @@ export default function DashBoard() {
             <hr></hr>
             <main></main>
           </div>
-          <div className="w-[35%] h-80 shadow-md bg-white rounded-md">
+          <div className="w-[38%] h-80 shadow-md bg-white rounded-md">
             <header className="flex justify-between items-center px-6 py-4">
               <h2 className="font-bold text-lg text-primaryDarkBlue">Gender</h2>
               <select className="w-32 font-medium text-xs p-1 bg-gray-200 text-primaryDarkBlue rounded-full">
@@ -55,24 +58,24 @@ export default function DashBoard() {
           </div>
         </div>
         <div className="w-full flex space-x-4">
-          <div className="w-[65%] h-80 shadow-md bg-white rounded-md px-5">
+          <div className="w-[62%] shadow-md bg-white rounded-md px-5">
             <header className="flex justify-between items-center pt-4">
               <h2 className="font-bold text-lg text-primaryDarkBlue">Upcoming  Appointments</h2>
               <p className="text-sm hover:underline font-semibold cursor-pointer text-primaryBlue">View All</p>
             </header>
             <main className="mt-10">
-              <ul className="flex flex-col">
-                <li className="flex justify-between items-center font-semibold text-sm text-primaryDarkBlue">
-                  <h3>Photo</h3>
-                  <h3>Name</h3>
-                  <h3>Appointment with</h3>
-                  <h3>Time</h3>
-                  <h3>Actions</h3>
-                </li>
-              </ul>
+              <AppointmentsTable />
             </main>
           </div>
-          <div className="w-[35%] h-80 shadow-md bg-white rounded-md"></div>
+          <div className="w-[38%] shadow-md bg-white rounded-md px-5">
+            <header className="flex justify-between items-center pt-4">
+              <h2 className="font-bold text-lg text-primaryDarkBlue">Doctor List</h2>
+              <FaEllipsisVertical className="text-primaryDarkBlue cursor-pointer" size={20} />
+            </header>
+            <main className="mt-10">
+              <DoctorListTable />
+            </main>
+          </div>
         </div>
     </div>
   )
