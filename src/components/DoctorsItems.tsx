@@ -3,7 +3,9 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { FaEllipsisVertical } from "react-icons/fa6";
+import Dropdown from "./Dropdown";
+
+
 
 export default function DoctorsItems({ doctors, layoutType }:{doctors:IDoctorList[], layoutType:string}) {
     return (
@@ -32,9 +34,7 @@ export default function DoctorsItems({ doctors, layoutType }:{doctors:IDoctorLis
                                 <button>Message</button>
                             </div>
                         </div>
-                        <button className={`absolute right-2 ${layoutType === "list"? "top-5":"top-3"}`}>
-                            <FaEllipsisVertical size={20} className="text-primaryDarkBlue" />
-                        </button>
+                        <Dropdown layoutType={layoutType} />
                     </li>
                 ))
             }
