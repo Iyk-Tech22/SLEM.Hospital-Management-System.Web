@@ -5,7 +5,7 @@ import { DoctorListTable } from "@/components/DoctorListTable";
 import { FaEllipsisVertical } from 'react-icons/fa6';
 
 
-export default function Dashboard() {
+export default function DashboardPage() {
   return (
     <div className="flex flex-col space-y-5">
         <header>

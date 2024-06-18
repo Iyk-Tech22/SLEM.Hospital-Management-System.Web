@@ -15,18 +15,18 @@ enum Status {
   ABSEND
 }
 
-interface IDashboardNavLinks {
+export interface IDashboardNavLinks {
   name: string;
   icon: JSX.ElementType | IconType;
 }
 
-interface IDashboardStats {
+export interface IDashboardStats {
   name: string;
   icon: IconType;
   stats: number;
 }
 
-interface IAppointments {
+export interface IAppointments {
   profile: string;
   name: string;
   appointmentWith: string;
@@ -34,10 +34,11 @@ interface IAppointments {
   action: boolean;
 }
 
-interface IDoctorList {
+export interface IDoctorList {
   profile: string,
   doctorName: string,
-  status: Status
+  status?: Status
+  department?: string
 }
 
 const DashboardNavLinks: IDashboardNavLinks[] = [
@@ -109,5 +110,38 @@ const DoctorList: IDoctorList[] = [
   },
 ];
 
+const Doctors: IDoctorList[] = [
+  {
+    profile: "https://i.pravatar.cc/60?u=4994710",
+    doctorName: "Dr. Jenney Russell",
+    department:"Urologist",
+  },
+  {
+    profile: "https://i.pravatar.cc/60?u=4994712",
+    doctorName: "Dr. Eduardo Hawkins",
+    department:"Cardiologist",
+  },
+  {
+    profile: "https://i.pravatar.cc/60?u=4994713",
+    doctorName: "Dr. Arlane Lane",
+    department:"Dentist",
+  },
+  {
+    profile: "https://i.pravatar.cc/60?u=4994715",
+    doctorName: "Dr. Ted Tones",
+    department:"Psychiatrist",
+  },
+  {
+    profile: "https://i.pravatar.cc/60?u=4994716",
+    doctorName: "Dr. Angel Lane",
+    department:"Pediatrics",
+  },
+  {
+    profile: "https://i.pravatar.cc/60?u=4994717",
+    doctorName: "Dr. Authur Miles",
+    department:"Radiologist",
+  },
+];
 
-export { DashboardNavLinks, DashboardStats, Appointments, DoctorList };
+
+export { DashboardNavLinks, DashboardStats, Appointments, DoctorList, Doctors };
