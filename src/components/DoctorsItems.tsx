@@ -3,35 +3,38 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { FaEllipsisVertical } from "react-icons/fa6";
 
-export default function DoctorsItems({ doctors }:{doctors:IDoctorList[]}) {
+export default function DoctorsItems({ doctors, layoutType }:{doctors:IDoctorList[], layoutType:string}) {
     return (
-        <ul className="grid grid-cols-3 gap-6">
+        <ul className={`grid w-full ${layoutType === "grid" ? "grid-cols-3 gap-6": "grid-cols-2 gap-3"} `}>
             {
                 doctors.map(doctor => (
-                    <li key={doctor.doctorName} className="bg-white p-3 rounded-md">
-                        <div className="flex flex-col justify-between space-y-6">
-                            <div className="flex flex-col items-center justify-center space-y-1">
-                                <img src={doctor.profile} alt="doctor image" className="rounded-full shadow-md" />
+                    <li key={doctor.doctorName} className="bg-white p-3 rounded-md relative">
+                        <div className={`flex ${layoutType === "grid" ? "flex-col justify-between space-y-6": "flex-row items-center space-x-3"} `}>
+                            <div className={`flex ${layoutType === "grid" ? "flex-col items-center justify-center space-y-1": "flex-row space-x-4 items-center"} `}>
+                                <img src={doctor.profile} alt="doctor image" className={`rounded-full shadow-md`}width={layoutType === "list"? 30: ""} height={layoutType === "list"? 30: ""} />
                                 <h2 className="font-semibold text-primaryDarkBlue">{doctor.doctorName}</h2>
                                 <small className="font-semibold text-primaryDarkBlue">{doctor.department}</small>
                             </div>
-                            <div className="flex flex-col space-y-6 justify-center items-center">
+                            <div className={`flex ${layoutType === "grid" ? "flex-col space-y-6 justify-center items-center": "flex-row items-end space-x-3"} `} >
                                 <div className="flex space-x-4">
                                     <span className="bg-white p-1 shadow-md rounded-full">
-                                        <Link to="#"><FaFacebook size={18} /></Link>
+                                        <Link to="#"><FaFacebook size={18}  className="text-primaryDarkBlue"/></Link>
                                     </span>
                                     <span className="bg-white p-1 shadow-md rounded-full">
-                                        <Link to="#"><FaInstagram size={18} /></Link>
+                                        <Link to="#"><FaInstagram size={18}  className="text-primaryDarkBlue"/></Link>
                                     </span>
                                     <span className="bg-white p-1 shadow-md rounded-full">
-                                        <Link to="#"><FaTwitter size={18} /></Link>
+                                        <Link to="#"><FaTwitter size={18} className="text-primaryDarkBlue" /></Link>
                                     </span>
                                 </div>
                                 <button>Message</button>
                             </div>
                         </div>
-                        <span></span>
+                        <button className={`absolute right-2 ${layoutType === "list"? "top-5":"top-3"}`}>
+                            <FaEllipsisVertical size={20} className="text-primaryDarkBlue" />
+                        </button>
                     </li>
                 ))
             }

@@ -9,7 +9,7 @@ import avatar from "@/assets/images/avatar.png";
 
 export default function DashboardLayout() {
     return (
-        <div className="w-full h-full flex">
+        <div className="max-w-full min-h-screen flex">
             <aside className="w-[20%] max-h-full z-10 flex flex-col px-4 py-3 shadow-[0_3px_3px_1px_rgba(0,0,0,0.1)]">
                 <div className="pl-3 mb-10">
                     <Logo />
@@ -56,7 +56,7 @@ export default function DashboardLayout() {
                         </li>
                     </ul> 
                 </header>
-                <section className="h-[90%] bg-[#f6f7fb] p-5">
+                <section className="h-full bg-[#f6f7fb] p-5">
                     <Outlet />
                 </section>
             </main>
