@@ -3,7 +3,9 @@ import { currencyFormater } from "@/utils/currencyFormater";
 import { AppointmentsTable } from "@/components/AppointmentsTable";
 import { DoctorListTable } from "@/components/DoctorListTable";
 import { FaEllipsisVertical } from 'react-icons/fa6';
+import { Appointments } from "@/data/constant";
 
+const headers = ["profile", "name", "appointment With", "timing",  "action"];
 
 export default function DashboardPage() {
   return (
@@ -64,7 +66,7 @@ export default function DashboardPage() {
               <p className="text-sm hover:underline font-semibold cursor-pointer text-primaryBlue">View All</p>
             </header>
             <main className="mt-10">
-              <AppointmentsTable />
+              <AppointmentsTable headers={headers} appointments={Appointments} />
             </main>
           </div>
           <div className="w-[38%] shadow-md bg-white rounded-md px-5">
