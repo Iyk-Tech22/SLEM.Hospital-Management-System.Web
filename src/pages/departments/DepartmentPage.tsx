@@ -30,13 +30,13 @@ export default function DepartmentsPage() {
         <div className="w-full flex space-x-4">
           <div className="w-full shadow-md bg-white rounded-md px-5">
             <header className="flex justify-between items-center pt-4">
-              <h2 className="font-bold text-lg text-primaryDarkBlue">Upcoming  Appointments</h2>
+              <h2 className="font-bold text-lg text-primaryDarkBlue">Departments List</h2>
               <div className="flex items-center space-x-6">
                 <p className="text-sm hover:underline font-semibold cursor-pointer text-primaryBlue">View All</p>
                 <button className="text-sm py-1 px-2 rounded-full bg-[#fff4f3] text-primaryOrange">Add Departments</button>
               </div>
             </header>
-            <main className="">
+            <main className="mt-6">
               <DepartmentsTable headers={headers} departments={DepartmentsData} />
             </main>
           </div>
