@@ -1,4 +1,6 @@
 import DepartmentsTable from "@/components/DepartmentsTable";
+import EmployeeBarchart from "@/components/EmployeeBarchart";
+import TotalPieChart from "@/components/TotalPiecharts";
 import { DepartmentsData } from "@/data/constant";
 
 const headers = ["Department Name", "Doctor", "Head of Department", "Status", "Actions"];
@@ -11,13 +13,18 @@ export default function DepartmentsPage() {
             <header className="flex justify-between items-center py-3">
               <h2 className="font-bold text-lg text-primaryDarkBlue">Total Departments</h2>
             </header>
-            <main></main>
+            <main className="">
+              <TotalPieChart />
+            </main>
           </div>
           <div className="w-[62%] h-80 shadow-md bg-white rounded-md">
             <header className="flex justify-between items-center px-6 py-4">
               <h2 className="font-bold text-lg text-primaryDarkBlue">Employees</h2>
               <p className="text-sm font-medium text-primaryDarkBlue">Number of staff according to departments</p>
             </header>
+            <main>
+              <EmployeeBarchart />
+            </main>
           </div>
         </div>
         <div className="w-full flex space-x-4">
@@ -29,7 +36,7 @@ export default function DepartmentsPage() {
                 <button className="text-sm py-1 px-2 rounded-full bg-[#fff4f3] text-primaryOrange">Add Departments</button>
               </div>
             </header>
-            <main className="mt-10">
+            <main className="">
               <DepartmentsTable headers={headers} departments={DepartmentsData} />
             </main>
           </div>

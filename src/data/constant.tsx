@@ -1,6 +1,7 @@
 import { JSX } from "react";
 import { IconType } from "react-icons";
 import DashboardIcon from "@/components/DashboardIcon";
+
 import {
   FaCalendarCheck,
   FaUserMd,
@@ -12,7 +13,7 @@ import {
 
 enum Status {
   AVAILABLE,
-  ABSEND
+  ABSEND,
 }
 
 export interface IDashboardNavLinks {
@@ -27,27 +28,33 @@ export interface IDashboardStats {
 }
 
 export interface IAppointments {
-  profile: string,
-  name: string,
-  appointmentWith: string,
-  date?: string,
-  timing: string,
-  action: boolean,
-  disease?:string
+  profile: string;
+  name: string;
+  appointmentWith: string;
+  date?: string;
+  timing: string;
+  action: boolean;
+  disease?: string;
 }
 
 export interface IDoctorList {
-  profile: string,
-  doctorName: string,
-  status?: Status
-  department?: string
+  profile: string;
+  doctorName: string;
+  status?: Status;
+  department?: string;
 }
 
 export interface IDepartments {
-  departmentName: string,
-  doctor: string,
-  headDepartment: string,
-  status: "Active" | "Inactive",
+  departmentName: string;
+  doctor: string;
+  headDepartment: string;
+  status: "Active" | "Inactive";
+}
+
+export interface ILineChartData {
+  name: string,
+  "New Patients": number,
+  "Old Patients": number
 }
 
 const DashboardNavLinks: IDashboardNavLinks[] = [
@@ -79,21 +86,21 @@ const Appointments: IAppointments[] = [
     appointmentWith: "Ted Wilson",
     timing: "7:12 AM",
     action: true,
-    },
+  },
   {
     profile: "https://i.pravatar.cc/28?u=499473",
     name: "Juanita Alexander",
     appointmentWith: "Bassies Miles",
     timing: "9:20 AM",
     action: true,
-    },
+  },
   {
     profile: "https://i.pravatar.cc/28?u=499474",
     name: "Rosemary Hawkins",
     appointmentWith: "Brandon Henry",
     timing: "3:20 AM",
     action: true,
-  }
+  },
 ];
 
 const DoctorList: IDoctorList[] = [
@@ -123,32 +130,32 @@ const Doctors: IDoctorList[] = [
   {
     profile: "https://i.pravatar.cc/60?u=4994710",
     doctorName: "Dr. Jenney Russell",
-    department:"Urologist",
+    department: "Urologist",
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994712",
     doctorName: "Dr. Eduardo Hawkins",
-    department:"Cardiologist",
+    department: "Cardiologist",
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994713",
     doctorName: "Dr. Arlane Lane",
-    department:"Dentist",
+    department: "Dentist",
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994715",
     doctorName: "Dr. Ted Tones",
-    department:"Psychiatrist",
+    department: "Psychiatrist",
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994716",
     doctorName: "Dr. Angel Lane",
-    department:"Pediatrics",
+    department: "Pediatrics",
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994717",
     doctorName: "Dr. Authur Miles",
-    department:"Radiologist",
+    department: "Radiologist",
   },
 ];
 
@@ -160,7 +167,7 @@ const AppointmentsData: IAppointments[] = [
     date: "20 May 2020",
     timing: "1:12 AM",
     action: true,
-    disease: "Fever"
+    disease: "Fever",
   },
   {
     profile: "https://i.pravatar.cc/28?u=499472",
@@ -169,7 +176,7 @@ const AppointmentsData: IAppointments[] = [
     date: "20 May 2020",
     timing: "7:12 AM",
     action: true,
-    disease: "Heart"
+    disease: "Heart",
   },
   {
     profile: "https://i.pravatar.cc/28?u=499473",
@@ -178,7 +185,7 @@ const AppointmentsData: IAppointments[] = [
     date: "20 May 2020",
     timing: "9:20 AM",
     action: true,
-    disease: "Cold"
+    disease: "Cold",
   },
   {
     profile: "https://i.pravatar.cc/28?u=499474",
@@ -187,7 +194,7 @@ const AppointmentsData: IAppointments[] = [
     date: "20 May 2020",
     timing: "3:20 AM",
     action: true,
-    disease: "Diabietes"
+    disease: "Diabietes",
   },
   {
     profile: "https://i.pravatar.cc/28?u=499475",
@@ -196,7 +203,7 @@ const AppointmentsData: IAppointments[] = [
     date: "20 May 2020",
     timing: "3:20 AM",
     action: true,
-    disease: "asthma"
+    disease: "asthma",
   },
   {
     profile: "https://i.pravatar.cc/28?u=499476",
@@ -205,7 +212,7 @@ const AppointmentsData: IAppointments[] = [
     date: "20 May 2020",
     timing: "3:20 AM",
     action: true,
-    disease: "Fever"
+    disease: "Fever",
   },
   {
     profile: "https://i.pravatar.cc/28?u=499477",
@@ -214,7 +221,7 @@ const AppointmentsData: IAppointments[] = [
     date: "20 May 2020",
     timing: "3:20 AM",
     action: true,
-    disease: "Heart"
+    disease: "Heart",
   },
   {
     profile: "https://i.pravatar.cc/28?u=499478",
@@ -223,7 +230,7 @@ const AppointmentsData: IAppointments[] = [
     date: "20 May 2020",
     timing: "3:20 AM",
     action: true,
-    disease: "Heart"
+    disease: "Heart",
   },
   {
     profile: "https://i.pravatar.cc/28?u=499479",
@@ -232,7 +239,7 @@ const AppointmentsData: IAppointments[] = [
     date: "20 May 2020",
     timing: "3:20 AM",
     action: true,
-    disease: "Fever"
+    disease: "Fever",
   },
   {
     profile: "https://i.pravatar.cc/28?u=499480",
@@ -241,18 +248,94 @@ const AppointmentsData: IAppointments[] = [
     date: "20 May 2020",
     timing: "3:20 AM",
     action: true,
-    disease: "Asthma"
-  }
+    disease: "Asthma",
+  },
 ];
 
 const DepartmentsData: IDepartments[] = [
-  { departmentName: "Neurology", doctor: "Jane Cooper", headDepartment: "Marvin McKinney", status: "Active" },
-  { departmentName: "Cancer Department", doctor: "Wade Warren", headDepartment: "Ronald Richards", status: "Inactive" },
-  { departmentName: "General Surgery", doctor: "Esther Howard", headDepartment: "Dianne Russell", status: "Active" },
-  { departmentName: "Radiotherapy", doctor: "Cameron Williamson", headDepartment: "Floyd Miles", status: "Active" },
-  { departmentName: "Orthopedics", doctor: "Brooklyn Simmons", headDepartment: "Robert Fox", status: "Inactive" },
-  { departmentName: "Opthalmology", doctor: "Leslie Alexander", headDepartment: "Devon Lane", status: "Active" },
-]
+  {
+    departmentName: "Neurology",
+    doctor: "Jane Cooper",
+    headDepartment: "Marvin McKinney",
+    status: "Active",
+  },
+  {
+    departmentName: "Cancer Department",
+    doctor: "Wade Warren",
+    headDepartment: "Ronald Richards",
+    status: "Inactive",
+  },
+  {
+    departmentName: "General Surgery",
+    doctor: "Esther Howard",
+    headDepartment: "Dianne Russell",
+    status: "Active",
+  },
+  {
+    departmentName: "Radiotherapy",
+    doctor: "Cameron Williamson",
+    headDepartment: "Floyd Miles",
+    status: "Active",
+  },
+  {
+    departmentName: "Orthopedics",
+    doctor: "Brooklyn Simmons",
+    headDepartment: "Robert Fox",
+    status: "Inactive",
+  },
+  {
+    departmentName: "Opthalmology",
+    doctor: "Leslie Alexander",
+    headDepartment: "Devon Lane",
+    status: "Active",
+  },
+];
 
+const LineChartData = [
+  {
+    name: "June 21",
+    "Old Patients": 20,
+    "New Patients": 10,
+  },
+  {
+    name: "June 22",
+    "Old Patients": 30,
+    "New Patients": 8,
+  },
+  {
+    name: "June 23",
+    "Old Patients": 40,
+    "New Patients": 15,
+  },
+  {
+    name: "June 24",
+    "Old Patients": 26,
+    "New Patients": 10,
+  },
+  {
+    name: "June 25",
+    "Old Patients": 50,
+    "New Patients": 30,
+  },
+  {
+    name: "June 26",
+    "Old Patients": 30,
+    "New Patients": 35,
+  },
+  {
+    name: "June 27",
+    "Old Patients": 60,
+    "New Patients": 30,
+  },
+];
 
-export { DashboardNavLinks, DashboardStats, Appointments, DoctorList, Doctors, AppointmentsData, DepartmentsData };
+export {
+  DashboardNavLinks,
+  DashboardStats,
+  Appointments,
+  DoctorList,
+  Doctors,
+  AppointmentsData,
+  DepartmentsData,
+  LineChartData
+};
