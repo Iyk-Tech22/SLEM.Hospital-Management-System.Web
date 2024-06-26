@@ -57,6 +57,17 @@ export interface ILineChartData {
   "Old Patients": number
 }
 
+export interface IPatients {
+  profile: string,
+  patientID: string,
+  name: string,
+  age: number,
+  address: string,
+  number: string,
+  lastVist: string,
+  status: "APPROVED" | "PENDING" | "REJECTED"
+}
+
 const DashboardNavLinks: IDashboardNavLinks[] = [
   { name: "dashboard", icon: DashboardIcon },
   { name: "appointments", icon: FaCalendarCheck },
@@ -329,6 +340,79 @@ const LineChartData = [
   },
 ];
 
+const Patients: IPatients[] = [
+  {
+    profile: "https://i.pravatar.cc/28?u=499480",
+    patientID: "US 00598",
+    name: "Samuel",
+    age: 32,
+    address: "71 Pilgrim Avenue Chevy Chase, MD 20815",
+    number: "404-447-7845",
+    lastVist: "11 Jan 2019",
+    status: "APPROVED",
+  },
+  {
+    profile: "https://i.pravatar.cc/28?u=499481",
+    patientID: "DR 00258",
+    name: "Alexander",
+    age: 22,
+    address: "123 6th St. Melbourne, FL 32904	",
+    number: "404-447-7845",
+    lastVist: "15 Jan 2019",
+    status: "APPROVED",
+  },
+  {
+    profile: "https://i.pravatar.cc/28?u=499482",
+    patientID: "YM 00369",
+    name: "Richard",
+    age: 26,
+    address: "123 6th St. Melbourne, FL 32904",
+    number: "404-447-8545",
+    lastVist: "16 Jan 2019",
+    status: "APPROVED",
+  },
+  {
+    profile: "https://i.pravatar.cc/28?u=499483",
+    patientID: "SO 00147",
+    name: "Samuel",
+    age: 45,
+    address: "71 Pilgrim Avenue Chevy Chase, MD 20815",
+    number: "404-447-5963",
+    lastVist: "17 Jan 2019",
+    status: "APPROVED",
+  },
+  {
+    profile: "https://i.pravatar.cc/28?u=499484",
+    patientID: "JW 00123",
+    name: "Stephen",
+    age: 55,
+    address: "71 Pilgrim Avenue Chevy Chase, MD 20815",
+    number: "404-447-6013",
+    lastVist: "18 Jan 2019",
+    status: "APPROVED",
+  },
+  {
+    profile: "https://i.pravatar.cc/28?u=499486",
+    patientID: "JW 00123",
+    name: "Cameron",
+    age: 38,
+    address: "71 Pilgrim Avenue Chevy Chase, MD 20815",
+    number: "404-447-4593",
+    lastVist: "19 Jan 2019",
+    status: "PENDING",
+  },
+  {
+    profile: "https://i.pravatar.cc/28?u=499487",
+    patientID: "JW 00123",
+    name: "Alex",
+    age: 38,
+    address: "123 6th St. Melbourne, FL 32904",
+    number: "404-447-1593",
+    lastVist: "20 Jan 201	",
+    status: "PENDING",
+  },
+];
+
 export {
   DashboardNavLinks,
   DashboardStats,
@@ -337,5 +421,6 @@ export {
   Doctors,
   AppointmentsData,
   DepartmentsData,
-  LineChartData
+  LineChartData,
+  Patients
 };

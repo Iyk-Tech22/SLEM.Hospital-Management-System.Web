@@ -31,7 +31,7 @@ export default function DashboardLayout() {
                     }
                 </ul>
                 <div className="w-full h-full pl-3 mt-16 pb-8 flex flex-col justify-between">
-                    <Link to="register-patients" className=" w-[70%] px-4 py-2 bg-primaryBlue text-white font-medium rounded-md text-sm">
+                    <Link to="patients/add-patient" className=" w-[70%] px-4 py-2 bg-primaryBlue text-white font-medium rounded-md text-sm">
                         + Register Patient
                     </Link>
                     <Link to="setting" className="flex space-x-3">
@@ -42,7 +42,7 @@ export default function DashboardLayout() {
             </aside>
             <main className="w-[80%] h-full">
                 <header className="flex justify-between z-20 border-b-2 border-gray-200 items-center h-[10%] px-6 py-2 bg-white">
-                    <SearchBar />
+                    <SearchBar placeholder="Search..." />
                     <ul className="flex items-center space-x-4">
                         <li className="relative cursor-pointer">
                             <FaBell className="text-primaryBlue" size={21}/>
