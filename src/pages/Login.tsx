@@ -8,16 +8,18 @@ import { Link } from "react-router-dom";
 export default function Login() {
   return (
     <div className="flex flex-col justify-center items-center max-w-2xl h-full mx-auto pt-8">
-      <Logo />
+      <Link to="/">
+        <Logo />
+      </Link>
       <h2 className="text-xl font-medium mb-3 mt-16">Login to your account</h2>
       <form className="w-1/2">
         <div className="w-full space-y-6">
           <div className="grid space-y-3">
-            <Label name="email" label="Email" />
+            <Label name="email" label="Email" required={true} />
             <Input id="email" name="email" type="email" />
           </div>
           <div className="grid space-y-3">
-            <Label name="password" label="Password" />
+            <Label name="password" label="Password" required={true} />
             <Input id="password" name="password" type="password" />
           </div>
           <div className="flex items-start space-x-2">
@@ -43,7 +45,7 @@ export default function Login() {
             </div>
             <div className="flex justify-center items-center space-x-1 mt-3">
               <p className="text-sm">Don't have an account?</p>
-              <Link to="/auth/register" className="text-sm">
+              <Link to="/auth/signup" className="text-sm">
                 <span className="text-primaryBlue font-medium">Register</span>
               </Link>
             </div>

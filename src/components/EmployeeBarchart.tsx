@@ -35,7 +35,7 @@
             <Tooltip />
             <Bar dataKey="quantity" fill="#8884d8">
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={colors[index % 20]} />
+                <Cell key={`${entry.name}-${index}`} fill={colors[index % 20]} />
               ))}
             </Bar>
           </BarChart>

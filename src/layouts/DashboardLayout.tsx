@@ -2,7 +2,6 @@ import Logo from "@/components/Logo";
 import { Outlet, Link } from "react-router-dom";
 import { DashboardNavLinks } from "@/data/constant";
 import settingIcon from "@/assets/icons/setting-icon.svg";
-import SearchBar from "@/components/SearchBar";
 import { FaBell, FaAngleDown } from "react-icons/fa";
 import avatar from "@/assets/images/avatar.png";
 
@@ -41,8 +40,7 @@ export default function DashboardLayout() {
                 </div>
             </aside>
             <main className="w-[80%] h-full">
-                <header className="flex justify-between z-20 border-b-2 border-gray-200 items-center h-[10%] px-6 py-2 bg-white">
-                    <SearchBar placeholder="Search..." />
+                <header className="flex justify-end z-20 border-b-2 border-gray-200 items-center h-[10%] px-6 py-2 bg-white">
                     <ul className="flex items-center space-x-4">
                         <li className="relative cursor-pointer">
                             <FaBell className="text-primaryBlue" size={21}/>

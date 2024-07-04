@@ -17,83 +17,89 @@ export default function RegisterPatientPage() {
             <p className="w-full text-sm font-medium text-white bg-primaryBlue p-3">
               Basic Information
             </p>
-            {/* FIRST & LAST NAME */}
-            <div className="grid grid-cols-2 gap-5 mt-4">
-              <div className="space-y-2">
-                <Label name="firstName" label="First Name" />
-                <input
-                  id="firstName"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+            <div className="bg-white px-8 py-4">
+              {/* FIRST & LAST NAME */}
+              <div className="grid grid-cols-2 gap-5 mt-4">
+                <div className="space-y-2">
+                  <Label name="firstName" label="First Name" required={true} />
+                  <input
+                    id="firstName"
+                    type="text"
+                    className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label name="lastName" label="Last Name" required={true} />
+                  <input
+                    id="lastName"
+                    type="text"
+                    className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  />
+                </div>
+              </div>
+              {/* PHONE & EMAIL */}
+              <div className="grid grid-cols-2 gap-5 mt-4">
+                <div className="space-y-2">
+                  <Label name="email" label="Email" required={true} />
+                  <input
+                    id="email"
+                    type="email"
+                    className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label name="phone" label="Phone No." required={true} />
+                  <input
+                    id="phone"
+                    type="text"
+                    className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  />
+                </div>
+              </div>
+              {/* GENDER & AGE */}
+              <div className="grid grid-cols-2 gap-5 mt-4">
+                <div className="space-y-2">
+                  <Label name="gender" label="Gender" required={true} />
+                  <select
+                    id="gender"
+                    className="w-full border border-gray-300 p-2  focus-visible:outline-primaryBlue"
+                  >
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <Label name="age" label="Age" required={true} />
+                  <input
+                    id="age"
+                    type="text"
+                    className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  />
+                </div>
+              </div>
+              {/* Date */}
+              <div className="grid space-y-2 mt-4">
+                <Label name="date" label="Date" required={true} />
+                <DatePicker
+                  selected={date}
+                  className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  onChange={(date) => setDate(date)}
                 />
               </div>
-              <div className="space-y-2">
-                <Label name="lastName" label="Last Name" />
-                <input
-                  id="lastName"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+              {/* DESCRIPTION */}
+              <div className="grid space-y-2 mt-4">
+                <Label
+                  name="description"
+                  label="Description"
+                  required={false}
                 />
+                <textarea
+                  className="border border-gray-300 py-2 px-3 focus-visible:outline-primaryBlue"
+                  id="description"
+                  rows={5}
+                  cols={5}
+                ></textarea>
               </div>
-            </div>
-            {/* PHONE & EMAIL */}
-            <div className="grid grid-cols-2 gap-5 mt-4">
-              <div className="space-y-2">
-                <Label name="email" label="Email" />
-                <input
-                  id="email"
-                  type="email"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label name="phone" label="Phone No." />
-                <input
-                  id="phone"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
-              </div>
-            </div>
-            {/* GENDER & AGE */}
-            <div className="grid grid-cols-2 gap-5 mt-4">
-              <div className="space-y-2">
-                <Label name="gender" label="Gender" />
-                <select
-                  id="gender"
-                  className="w-full border border-gray-300 p-2  focus-visible:outline-primaryBlue"
-                >
-                  <option>Male</option>
-                  <option>Female</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <Label name="age" label="Age" />
-                <input
-                  id="age"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
-              </div>
-            </div>
-            {/* Date */}
-            <div className="grid space-y-2 mt-4">
-              <Label name="date" label="Date" />
-              <DatePicker
-                selected={date}
-                className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                onChange={(date) => setDate(date)}
-              />
-            </div>
-            {/* DESCRIPTION */}
-            <div className="grid space-y-2 mt-4">
-              <Label name="description" label="Description" />
-              <textarea
-                className="border border-gray-300 py-2 px-3 focus-visible:outline-primaryBlue"
-                id="description"
-                rows={5}
-                cols={5}
-              ></textarea>
             </div>
           </div>
           {/* REGISTRATION FORM */}
@@ -101,46 +107,58 @@ export default function RegisterPatientPage() {
             <p className="w-full text-sm font-medium text-white bg-primaryBlue p-3">
               Registration Information
             </p>
-            {/* DOCTOR NAME & STAFF ON DUTY */}
-            <div className="grid grid-cols-2 gap-5 mt-4">
-              <div className="space-y-2">
-                <Label name="doctorName" label="Doctor" />
-                <input
-                  id="doctorName"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
+            <div className="px-8 py-4 bg-white">
+              {/* DOCTOR NAME & STAFF ON DUTY */}
+              <div className="grid grid-cols-2 gap-5 mt-4">
+                <div className="space-y-2">
+                  <Label name="doctorName" label="Doctor" required={true} />
+                  <input
+                    id="doctorName"
+                    type="text"
+                    className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label
+                    name="staffOnDuty"
+                    label="Staff On Duty"
+                    required={true}
+                  />
+                  <input
+                    id="staffOnDuty"
+                    type="text"
+                    className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  />
+                </div>
               </div>
-              <div className="space-y-2">
-                <Label name="staffOnDuty" label="Staff On Duty" />
-                <input
-                  id="staffOnDuty"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
-              </div>
-            </div>
-            {/* WARD NO. & DATE */}
-            <div className="grid grid-cols-2 gap-5 mt-4 mb-6">
-              <div className="space-y-2">
-                <Label name="wardNo" label=" Ward No." />
-                <input
-                  id="wardNo"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
-              </div>
-              <div className="grid space-y-2">
-                <Label name="chooseDate" label="Choose Date" />
-                <DatePicker
-                  selected={chooseDate}
-                  className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                  onChange={(date) => setChooseDate(date)}
-                />
+              {/* WARD NO. & DATE */}
+              <div className="grid grid-cols-2 gap-5 my-4 mb-6">
+                <div className="space-y-2">
+                  <Label name="wardNo" label=" Ward No." required={true} />
+                  <input
+                    id="wardNo"
+                    type="text"
+                    className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  />
+                </div>
+                <div className="grid space-y-2">
+                  <Label
+                    name="chooseDate"
+                    label="Choose Date"
+                    required={true}
+                  />
+                  <DatePicker
+                    selected={chooseDate}
+                    className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                    onChange={(date) => setChooseDate(date)}
+                  />
+                </div>
               </div>
             </div>
           </div>
-          <Button>Submit</Button>
+          <div className="mt-6">
+            <Button>Submit</Button>
+          </div>
         </form>
       </div>
     );

@@ -1,7 +1,7 @@
-export default function Label({name, label}:{name: string, label:string}) {
+export default function Label({name, label, required}:{name: string, label:string, required:boolean}) {
     return (
       <label htmlFor={name} className="text-sm font-medium">
-            {label}{name !== "remember-me" && <span className="text-xs text-red-600">*</span>}
+            {label}{required && <span className="text-xs text-red-600">*</span>}
       </label>
     );
 }
