@@ -33,7 +33,7 @@ export default function App() {
           <Route path="patients">
             <Route index element={<Navigate replace to="all-patients" />}></Route>
             <Route path="all-patients" element={<PatientsPage />}></Route>
-            <Route path="add-patient" element={<RegisterPatientPage />}></Route>
+            {/* <Route path="add-patient" element={<RegisterPatientPage />}></Route> */}
           </Route>
         </Route>
         <Route path="auth">
