@@ -18,7 +18,7 @@ export default function PatientsPage() {
   return (
     <div>
       <div className="space-y-5 bg-white rounded-md p-5 shadow-md">
-        {/* <header className="flex justify-between items-center">
+        {/* <header className="flex justify-between">
           <h2 className="font-bold text-xl text-primaryDarkBlue">
             Upcoming Appointments
           </h2>
