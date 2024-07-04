@@ -1,12 +1,12 @@
 import Button from "@/components/Button";
-import { useState } from "react";
-import DatePicker from "react-datepicker";
+// import { useState } from "react";
+// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Label from '../components/Label';
 
 export default function RegisterPatientPage() {
-    const [date, setDate] = useState<Date | null>(null);
-    const [chooseDate, setChooseDate] = useState<Date | null>(null);
+    // const [date, setDate] = useState<Date | null>(null);
+    // const [chooseDate, setChooseDate] = useState<Date | null>(null);
 
     return (
       <div className="max-w-2xl mx-auto">
@@ -78,14 +78,14 @@ export default function RegisterPatientPage() {
                 </div>
               </div>
               {/* Date */}
-              <div className="grid space-y-2 mt-4">
+              {/* <div className="grid space-y-2 mt-4">
                 <Label name="date" label="Date" required={true} />
                 <DatePicker
                   selected={date}
                   className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                   onChange={(date) => setDate(date)}
                 />
-              </div>
+              </div> */}
               {/* DESCRIPTION */}
               <div className="grid space-y-2 mt-4">
                 <Label
@@ -147,11 +147,11 @@ export default function RegisterPatientPage() {
                     label="Choose Date"
                     required={true}
                   />
-                  <DatePicker
+                  {/* <DatePicker
                     selected={chooseDate}
                     className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                     onChange={(date) => setChooseDate(date)}
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
