@@ -142,31 +142,37 @@ const Doctors: IDoctorList[] = [
     profile: "https://i.pravatar.cc/60?u=4994710",
     doctorName: "Dr. Jenney Russell",
     department: "Urologist",
+    status: Status.AVAILABLE,
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994712",
     doctorName: "Dr. Eduardo Hawkins",
     department: "Cardiologist",
+    status: Status.ABSEND,
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994713",
     doctorName: "Dr. Arlane Lane",
     department: "Dentist",
+    status: Status.AVAILABLE,
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994715",
     doctorName: "Dr. Ted Tones",
     department: "Psychiatrist",
+    status: Status.ABSEND,
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994716",
     doctorName: "Dr. Angel Lane",
     department: "Pediatrics",
+    status: Status.AVAILABLE,
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994717",
     doctorName: "Dr. Authur Miles",
     department: "Radiologist",
+    status: Status.AVAILABLE,
   },
 ];
 
@@ -422,5 +428,6 @@ export {
   AppointmentsData,
   DepartmentsData,
   LineChartData,
-  Patients
+  Patients,
+  Status
 };

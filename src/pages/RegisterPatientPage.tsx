@@ -1,12 +1,12 @@
 import Button from "@/components/Button";
-// import { useState } from "react";
-// import DatePicker from "react-datepicker";
+import { useState } from "react";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Label from '../components/Label';
 
 export default function RegisterPatientPage() {
-    // const [date, setDate] = useState<Date | null>(null);
-    // const [chooseDate, setChooseDate] = useState<Date | null>(null);
+    const [date, setDate] = useState<Date | null>(new Date());
+    const [chooseDate, setChooseDate] = useState<Date | null>(null);
 
     return (
       <div className="max-w-2xl mx-auto">
@@ -20,7 +20,7 @@ export default function RegisterPatientPage() {
             <div className="bg-white px-8 py-4">
               {/* FIRST & LAST NAME */}
               <div className="grid grid-cols-2 gap-5 mt-4">
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Label name="firstName" label="First Name" required={true} />
                   <input
                     id="firstName"
@@ -28,7 +28,7 @@ export default function RegisterPatientPage() {
                     className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Label name="lastName" label="Last Name" required={true} />
                   <input
                     id="lastName"
@@ -39,7 +39,7 @@ export default function RegisterPatientPage() {
               </div>
               {/* PHONE & EMAIL */}
               <div className="grid grid-cols-2 gap-5 mt-4">
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Label name="email" label="Email" required={true} />
                   <input
                     id="email"
@@ -47,7 +47,7 @@ export default function RegisterPatientPage() {
                     className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Label name="phone" label="Phone No." required={true} />
                   <input
                     id="phone"
@@ -58,7 +58,7 @@ export default function RegisterPatientPage() {
               </div>
               {/* GENDER & AGE */}
               <div className="grid grid-cols-2 gap-5 mt-4">
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Label name="gender" label="Gender" required={true} />
                   <select
                     id="gender"
@@ -68,7 +68,7 @@ export default function RegisterPatientPage() {
                     <option>Female</option>
                   </select>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Label name="age" label="Age" required={true} />
                   <input
                     id="age"
@@ -78,16 +78,16 @@ export default function RegisterPatientPage() {
                 </div>
               </div>
               {/* Date */}
-              {/* <div className="grid space-y-2 mt-4">
+              <div className="grid space-y-1 mt-4">
                 <Label name="date" label="Date" required={true} />
                 <DatePicker
                   selected={date}
                   className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                   onChange={(date) => setDate(date)}
                 />
-              </div> */}
+              </div>
               {/* DESCRIPTION */}
-              <div className="grid space-y-2 mt-4">
+              <div className="grid space-y-1 mt-4">
                 <Label
                   name="description"
                   label="Description"
@@ -110,7 +110,7 @@ export default function RegisterPatientPage() {
             <div className="px-8 py-4 bg-white">
               {/* DOCTOR NAME & STAFF ON DUTY */}
               <div className="grid grid-cols-2 gap-5 mt-4">
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Label name="doctorName" label="Doctor" required={true} />
                   <input
                     id="doctorName"
@@ -118,7 +118,7 @@ export default function RegisterPatientPage() {
                     className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Label
                     name="staffOnDuty"
                     label="Staff On Duty"
@@ -133,7 +133,7 @@ export default function RegisterPatientPage() {
               </div>
               {/* WARD NO. & DATE */}
               <div className="grid grid-cols-2 gap-5 my-4 mb-6">
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Label name="wardNo" label=" Ward No." required={true} />
                   <input
                     id="wardNo"
@@ -141,23 +141,26 @@ export default function RegisterPatientPage() {
                     className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                   />
                 </div>
-                <div className="grid space-y-2">
+                <div className="grid space-y-1">
                   <Label
                     name="chooseDate"
                     label="Choose Date"
                     required={true}
                   />
-                  {/* <DatePicker
+                  <DatePicker
                     selected={chooseDate}
                     className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                     onChange={(date) => setChooseDate(date)}
-                  /> */}
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div className="mt-6">
-            <Button>Submit</Button>
+          <div className="flex space-x-3 mt-6">
+            <Button type="submit" styles="bg-primaryBlue text-white hover:bg-primaryBlue/90">Submit</Button>
+            <Button type="button" styles="border border-gray-300 text-gray-400 hover:bg-gray-200">
+              Cancel
+            </Button>
           </div>
         </form>
       </div>

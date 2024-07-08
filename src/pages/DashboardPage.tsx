@@ -2,11 +2,11 @@ import { DashboardStats } from "@/data/constant";
 import { currencyFormater } from "@/utils/currencyFormater";
 import { AppointmentsTable } from "@/components/AppointmentsTable";
 import { DoctorListTable } from "@/components/DoctorListTable";
-import { FaEllipsisVertical } from 'react-icons/fa6';
 import { Appointments } from "@/data/constant";
 import { LineChartData } from "@/data/constant";
 import PatientsLineChart from "@/components/PatientsLineChart";
 import GenderPiechart from "@/components/GenderPiechart";
+import { Link } from "react-router-dom";
 
 const headers = ["profile", "name", "appointment With", "timing",  "action"];
 
@@ -79,9 +79,11 @@ export default function DashboardPage() {
             <h2 className="font-bold text-lg text-primaryDarkBlue">
               Upcoming Appointments
             </h2>
-            <p className="text-sm hover:underline font-semibold cursor-pointer text-primaryBlue">
-              View All
-            </p>
+            <Link to="/appointments">
+              <p className="text-sm hover:underline font-semibold cursor-pointer text-primaryBlue">
+                View All
+              </p>
+            </Link>
           </header>
           <main className="mt-10">
             <AppointmentsTable headers={headers} appointments={Appointments} />
@@ -92,10 +94,11 @@ export default function DashboardPage() {
             <h2 className="font-bold text-lg text-primaryDarkBlue">
               Doctor List
             </h2>
-            <FaEllipsisVertical
-              className="text-primaryDarkBlue cursor-pointer"
-              size={20}
-            />
+            <Link to="/doctors">
+              <p className="text-sm hover:underline font-semibold cursor-pointer text-primaryBlue">
+                View All
+              </p>
+            </Link>
           </header>
           <main className="mt-10">
             <DoctorListTable />

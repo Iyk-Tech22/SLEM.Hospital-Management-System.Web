@@ -39,7 +39,10 @@ export default function DoctorsPage() {
                 <FaList className="text-primaryDarkBlue" />
               </span>
             </div>
-            <Button>
+            <Button
+              type="button"
+              styles="bg-primaryBlue text-white hover:bg-primaryBlue/90"
+            >
               <Link to="/doctors/add-doctor">+Add Doctor</Link>
             </Button>
           </nav>

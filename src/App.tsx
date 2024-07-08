@@ -5,7 +5,7 @@ import DoctorsPage from "./pages/DoctorsPage";
 import AppointmentsPage from "./pages/AppointmentsPage";
 import DepartmentsPage from "./pages/DepartmentPage";
 import PatientsPage from "./pages/PatientsPage";
-// import RegisterPatientPage from "./pages/RegisterPatientPage";
+import RegisterPatientPage from "./pages/RegisterPatientPage";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import AddDoctor from "./pages/AddDoctor";
@@ -33,7 +33,7 @@ export default function App() {
           <Route path="patients">
             <Route index element={<Navigate replace to="all-patients" />}></Route>
             <Route path="all-patients" element={<PatientsPage />}></Route>
-            {/* <Route path="add-patient" element={<RegisterPatientPage />}></Route> */}
+            <Route path="add-patient" element={<RegisterPatientPage />}></Route>
           </Route>
         </Route>
         <Route path="auth">
