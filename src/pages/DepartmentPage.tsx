@@ -45,7 +45,7 @@ export default function DepartmentsPage() {
                 View All
               </p>
               <button className="text-sm py-1 px-2 rounded-full bg-[#fff4f3] text-primaryOrange">
-                <Link to="/departments/add-department">Add Departments</Link>
+                <Link to="/account/departments/add-department">Add Departments</Link>
               </button>
             </div>
           </header>

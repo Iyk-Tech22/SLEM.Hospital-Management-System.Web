@@ -43,7 +43,7 @@ export default function DoctorsPage() {
               type="button"
               styles="bg-primaryBlue text-white hover:bg-primaryBlue/90"
             >
-              <Link to="/doctors/add-doctor">+Add Doctor</Link>
+              <Link to="/account/doctors/add-doctor">+Add Doctor</Link>
             </Button>
           </nav>
           <main className="w-full">
