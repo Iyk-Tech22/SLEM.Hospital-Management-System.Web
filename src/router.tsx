@@ -14,6 +14,7 @@ import SignUp from "./pages/SignUp";
 import AddDoctor from "./pages/AddDoctor";
 import AddDepartment from "./pages/AddDepartment";
 import AuthLayout from "./layouts/AuthLayout";
+import Profile from "./pages/ProfilePage";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
           { path: "add-patient", element: <RegisterPatientPage /> },
         ],
       },
+      {
+        path: "profile",
+        element: <Profile />
+      }
     ],
   },
   {
