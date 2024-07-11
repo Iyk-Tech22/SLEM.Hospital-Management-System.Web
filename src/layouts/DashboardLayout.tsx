@@ -2,14 +2,14 @@ import Logo from "@/components/Logo";
 import { Outlet, Link } from "react-router-dom";
 import { DashboardNavLinks } from "@/data/constant";
 import settingIcon from "@/assets/icons/setting-icon.svg";
-import { FaBell, FaAngleDown } from "react-icons/fa";
+import { FaBell, FaAngleDown} from "react-icons/fa";
 import avatar from "@/assets/images/avatar.png";
 
 
 export default function DashboardLayout() {
     return (
         <div className="max-w-full min-h-screen flex">
-            <aside className="w-[20%] max-h-full z-10 flex flex-col px-4 py-3 shadow-[0_3px_3px_1px_rgba(0,0,0,0.1)]">
+            <aside className="w-[50%] md:w-[20%] max-h-full z-10 flex flex-col px-4 py-3 shadow-[0_3px_3px_1px_rgba(0,0,0,0.1)]">
                 <div className="pl-3 mb-10">
                     <Logo />
                 </div>
@@ -22,7 +22,7 @@ export default function DashboardLayout() {
                                         <navLink.icon color="#afb6c0" width={20} height={20} size={20}/>
                                     </span>
                                     <p>
-                                        <span className="capitalize">{navLink.name}</span>
+                                        <span className="capitalize hidden md:block">{navLink.name}</span>
                                     </p>
                                 </Link>
                             </li>
@@ -30,12 +30,12 @@ export default function DashboardLayout() {
                     }
                 </ul>
                 <div className="w-full h-full pl-3 mt-16 pb-8 flex flex-col justify-between">
-                    <Link to="patients/add-patient" className=" w-[70%] px-4 py-2 bg-primaryBlue text-white font-medium rounded-md text-sm">
+                    <Link to="patients/add-patient" className="hidden md:block w-[100%] md:w-[70%] px-2 py-2 bg-primaryBlue text-white font-medium rounded-md">
                         + Register Patient
                     </Link>
                     <Link to="setting" className="flex space-x-3">
                         <img src={settingIcon} alt="setting" />
-                        <span className="text-primaryGray font-medium text-sm">Settings</span>
+                        <span className="hidden md:block text-primaryGray font-medium text-sm">Settings</span>
                     </Link>
                 </div>
             </aside>
@@ -54,7 +54,7 @@ export default function DashboardLayout() {
                         </li>
                     </ul> 
                 </header>
-                <section className="h-full bg-[#f6f7fb] p-5">
+                <section className="h-full bg-[#f6f7fb] md:p-5">
                     <Outlet />
                 </section>
             </main>
