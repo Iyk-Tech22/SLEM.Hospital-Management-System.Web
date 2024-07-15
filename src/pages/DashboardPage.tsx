@@ -14,20 +14,20 @@ export default function DashboardPage() {
   return (
     <div className="flex flex-col space-y-5">
       <header>
-        <ul className="w-full flex justify-between items-center">
+        <ul className="w-full flex flex-col space-y-3 md:space-y-0 md:flex-row justify-between items-center">
           {DashboardStats.map((data) => (
             <li
               key={data.name}
-              className="flex items-center space-x-3 px-8 py-6 rounded-md bg-white shadow-md"
+              className="flex w-full md:w-auto items-center space-x-3 px-8 py-6 rounded-md bg-white shadow-md"
             >
               <div>
                 <data.icon className="text-primaryOrange" size={25} />
               </div>
               <div>
-                <p className="text-lg font-bold text-primaryDarkBlue">
+                <p className="text-base md:text-xl font-bold text-primaryDarkBlue">
                   {data.name}
                 </p>
-                <small className="text-base text-primaryBlue font-bold">
+                <small className="text-sm md:text-lg text-primaryBlue font-bold">
                   {data.name.toLowerCase() === "hospital earning"
                     ? currencyFormater(data.stats)
                     : data.stats}
@@ -37,20 +37,20 @@ export default function DashboardPage() {
           ))}
         </ul>
       </header>
-      <div className="w-full flex space-x-4 ">
-        <div className="w-[62%] h-80 shadow-md bg-white rounded-md px-6">
+      <div className="w-full hidden md:flex space-x-4 ">
+        <div className="w-full md:w-[62%] h-80 shadow-md bg-white rounded-md px-6">
           <header className="flex justify-between items-center py-3">
-            <h2 className="font-bold text-lg text-primaryDarkBlue">
+            <h2 className="font-bold text-base md:text-lg text-primaryDarkBlue">
               Hospital Survey
             </h2>
             <div className="flex space-x-4 text-sm">
               <div className="flex items-center space-x-2">
                 <span className="h-3 w-3 rounded-full bg-primaryBlue"></span>
-                <span>New Patients</span>
+                <span className="text-sm md:text-base">New Patients</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="h-3 w-3 rounded-full bg-primaryOrange"></span>
-                <span>Old Patients</span>
+                <span className="text-sm md:text-base">Old Patients</span>
               </div>
             </div>
           </header>
@@ -59,7 +59,7 @@ export default function DashboardPage() {
             <PatientsLineChart data={LineChartData} />
           </main>
         </div>
-        <div className="w-[38%] h-80 shadow-md bg-white rounded-md px-6">
+        <div className="w-full md:w-[38%] h-80 shadow-md bg-white rounded-md px-6">
           <header className="flex justify-between items-center py-4">
             <h2 className="font-bold text-lg text-primaryDarkBlue">Gender</h2>
             <select className="w-32 font-medium text-xs p-1 bg-gray-200 text-primaryDarkBlue rounded-full">
@@ -73,10 +73,10 @@ export default function DashboardPage() {
           </main>
         </div>
       </div>
-      <div className="w-full flex space-x-4">
-        <div className="w-[62%] shadow-md bg-white rounded-md px-5">
+      <div className="w-full flex flex-col md:flex-row md:space-x-4">
+        <div className="w-full mb-4 md:mb-0 md md:w-[62%] shadow-md bg-white rounded-md px-5">
           <header className="flex justify-between items-center pt-4">
-            <h2 className="font-bold text-lg text-primaryDarkBlue">
+            <h2 className="font-bold text-base md:text-lg text-primaryDarkBlue">
               Upcoming Appointments
             </h2>
             <Link to="/appointments">
@@ -89,9 +89,9 @@ export default function DashboardPage() {
             <AppointmentsTable headers={headers} appointments={Appointments} />
           </main>
         </div>
-        <div className="w-[38%] shadow-md bg-white rounded-md px-5">
+        <div className="w-full md:w-[38%] shadow-md bg-white rounded-md px-5">
           <header className="flex justify-between items-center pt-4">
-            <h2 className="font-bold text-lg text-primaryDarkBlue">
+            <h2 className="font-bold text-base md:text-lg text-primaryDarkBlue">
               Doctor List
             </h2>
             <Link to="/doctors">
@@ -100,7 +100,7 @@ export default function DashboardPage() {
               </p>
             </Link>
           </header>
-          <main className="mt-10">
+          <main className="text-xs md:text-sm mt-10">
             <DoctorListTable />
           </main>
         </div>

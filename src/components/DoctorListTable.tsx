@@ -12,7 +12,7 @@ import {
 export function DoctorListTable() {
     return (
         <div>
-            <Table>
+            <Table className='text-xs md:text-base'>
                 <TableHeader>
                     <TableRow>
                         <TableHead className="w-[100px] font-medium text-primaryDarkBlue">Photo</TableHead>

@@ -33,7 +33,7 @@ export default function PaginationLinks() {
                     <PaginationNext className="text-primaryBlue" href="#" />
                 </PaginationItem>
             </PaginationContent>
-            <div className="flex items-center space-x-3 text-xs font-medium text-primaryDarkBlue">
+            <div className="hidden md:flex items-center space-x-3 text-xs font-medium text-primaryDarkBlue">
                 <p>Results</p>
                 <select className="bg-white py-1 px-2 rounded-full">
                     <option selected>1-10</option>

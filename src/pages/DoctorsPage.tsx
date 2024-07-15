@@ -6,6 +6,7 @@ import { Doctors } from "@/data/constant";
 import { useState } from "react";
 import PaginationLinks from "@/components/PaginationLinks";
 import { Link } from "react-router-dom";
+import AssignPatientModal from "@/components/AssignPatientModal";
 
 const layoutSyles = "p-1 bg-white rounded-sm shadow-sm";
 
@@ -53,6 +54,9 @@ export default function DoctorsPage() {
         <nav className="mt-10 w-full">
           <PaginationLinks />
         </nav>
+
+        {/* ASSIGN PATIENT TO DOCTOR */}
+        <AssignPatientModal />
       </div>
     );
 }

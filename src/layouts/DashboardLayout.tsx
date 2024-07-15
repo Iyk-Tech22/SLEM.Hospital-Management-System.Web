@@ -28,7 +28,7 @@ export default function DashboardLayout() {
               <li key={navLink.name}>
                 <Link
                   to={navLink.name}
-                  className="flex p-3 items-center space-x-3 text-sm rounded-md hover:bg-[#f6f7fb] text-primaryGray font-medium"
+                  className="flex p-3 justify-center md:justify-start items-center space-x-3 text-sm rounded-md hover:bg-[#f6f7fb] text-primaryGray font-medium"
                 >
                   <span>
                     <navLink.icon
@@ -38,7 +38,7 @@ export default function DashboardLayout() {
                       size={20}
                     />
                   </span>
-                  <p>
+                  <p className="hidden md:block">
                     <span className="capitalize">{navLink.name}</span>
                   </p>
                 </Link>
@@ -48,13 +48,16 @@ export default function DashboardLayout() {
           <div className="w-full h-full pl-3 mt-16 pb-8 flex flex-col justify-between">
             <Link
               to="patients/add-patient"
-              className=" w-[70%] px-4 py-2 bg-primaryBlue text-white font-medium rounded-md text-sm"
+              className=" w-[70%] hidden md:block px-4 py-2 bg-primaryBlue text-white font-medium rounded-md text-sm"
             >
               + Register Patient
             </Link>
-            <Link to="setting" className="flex space-x-3">
+            <Link
+              to="setting"
+              className="flex justify-center md:justify-start space-x-3"
+            >
               <img src={settingIcon} alt="setting" />
-              <span className="text-primaryGray font-medium text-sm">
+              <span className="text-primaryGray hidden md:block rounded-md font-medium text-sm">
                 Settings
               </span>
             </Link>
@@ -70,7 +73,7 @@ export default function DashboardLayout() {
                     <span>{notifications.length}</span>
                   </div>
                 </li>
-              </NotificationDropdown> 
+              </NotificationDropdown>
               <AccountDropdown>
                 <li className="cursor-pointer">
                   <img

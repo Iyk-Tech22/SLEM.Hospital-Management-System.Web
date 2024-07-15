@@ -9,7 +9,7 @@ export default function AppointmentsPage() {
         <div>
             <div className='space-y-5 bg-white rounded-md p-5 shadow-md'>
                 <header className="flex justify-between items-center">
-                <h2 className="font-bold text-xl text-primaryDarkBlue">Upcoming  Appointments</h2>
+                <h2 className="font-bold text-lg md:text-xl text-primaryDarkBlue">Upcoming  Appointments</h2>
                 </header>
                 <AppointmentsTable headers={headers} appointments={AppointmentsData} />
             </div>

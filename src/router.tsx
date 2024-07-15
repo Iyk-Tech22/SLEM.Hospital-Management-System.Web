@@ -15,6 +15,7 @@ import AddDoctor from "./pages/AddDoctor";
 import AddDepartment from "./pages/AddDepartment";
 import AuthLayout from "./layouts/AuthLayout";
 import Profile from "./pages/ProfilePage";
+import AccountSettings from "./pages/AccountSetting";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />
+      },
+      {
+        path: "account-setting",
+        element: <AccountSettings />
       }
     ],
   },
