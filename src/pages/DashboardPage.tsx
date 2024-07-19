@@ -14,17 +14,17 @@ export default function DashboardPage() {
   return (
     <div className="flex flex-col space-y-5">
       <header>
-        <ul className="w-full flex justify-between items-center">
+        <ul className="w-full flex flex-col md:flex-row space-y-4 md:space-x-4 md:space-y-0 justify-between  md:items-center pt-5  ml-4 md:ml-0 md:pt-0">
           {DashboardStats.map((data) => (
             <li
               key={data.name}
-              className="flex items-center space-x-3 px-8 py-6 rounded-md bg-white shadow-md"
+              className=" w-[90%] md:w-[80%] h-28 flex items-center space-x-3 px-8 py-6 rounded-md bg-white shadow-md"
             >
               <div>
                 <data.icon className="text-primaryOrange" size={25} />
               </div>
               <div>
-                <p className="text-lg font-bold text-primaryDarkBlue">
+                <p className="text-sm md:text-lg font-bold text-primaryDarkBlue">
                   {data.name}
                 </p>
                 <small className="text-base text-primaryBlue font-bold">
@@ -37,9 +37,9 @@ export default function DashboardPage() {
           ))}
         </ul>
       </header>
-      <div className="w-full flex space-x-4 ">
-        <div className="w-[62%] h-80 shadow-md bg-white rounded-md px-6">
-          <header className="flex justify-between items-center py-3">
+      <div className="w-full flex flex-col md:flex-row space-y-4 md:space-x-4 md:space-y-0 items-center md:items-start">
+        <div className="w-[90%] md:w-[62%] h-96 md:h-80 shadow-md bg-white rounded-md pl-4 md:px-6">
+          <header className="flex justify-between items-center flex-col md:flex-row space-y-4 md:space-x-4 md:space-y-0 py-3">
             <h2 className="font-bold text-lg text-primaryDarkBlue">
               Hospital Survey
             </h2>
@@ -59,7 +59,7 @@ export default function DashboardPage() {
             <PatientsLineChart data={LineChartData} />
           </main>
         </div>
-        <div className="w-[38%] h-80 shadow-md bg-white rounded-md px-6">
+        <div className="w-[90%] md:w-[38%] h-80 shadow-md bg-white rounded-md pl-4 md:px-6">
           <header className="flex justify-between items-center py-4">
             <h2 className="font-bold text-lg text-primaryDarkBlue">Gender</h2>
             <select className="w-32 font-medium text-xs p-1 bg-gray-200 text-primaryDarkBlue rounded-full">
@@ -73,8 +73,8 @@ export default function DashboardPage() {
           </main>
         </div>
       </div>
-      <div className="w-full flex space-x-4">
-        <div className="w-[62%] shadow-md bg-white rounded-md px-5">
+      <div className="w-full flex flex-col md:flex-row space-y-4 md:space-x-4 md:space-y-0 pl-4 md:pl-0">
+        <div className="w-[90%] md:w-[62%] shadow-md bg-white rounded-md px-5">
           <header className="flex justify-between items-center pt-4">
             <h2 className="font-bold text-lg text-primaryDarkBlue">
               Upcoming Appointments
@@ -87,7 +87,7 @@ export default function DashboardPage() {
             <AppointmentsTable headers={headers} appointments={Appointments} />
           </main>
         </div>
-        <div className="w-[38%] shadow-md bg-white rounded-md px-5">
+        <div className="w-[90%] md:w-[38%] shadow-md bg-white rounded-md px-5">
           <header className="flex justify-between items-center pt-4">
             <h2 className="font-bold text-lg text-primaryDarkBlue">
               Doctor List
