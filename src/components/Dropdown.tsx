@@ -20,7 +20,7 @@ export default function Dropdown({layoutType}:{layoutType:string}) {
           <DropdownMenuContent>
             <DropdownMenuItem>Profile</DropdownMenuItem>
             <DropdownMenuItem
-              onClick={() => document.getElementById("my_modal_3").showModal()}
+              onClick={()=>(document.getElementById('my_modal_2') as HTMLDialogElement).showModal()}
             >
               Assign
             </DropdownMenuItem>
