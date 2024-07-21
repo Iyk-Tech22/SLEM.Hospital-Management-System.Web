@@ -9,10 +9,9 @@ import {
 } from "@/components/ui/pagination"
 
 
-
 export default function PaginationLinks() {
     return (
-        <Pagination className="flex justify-between items-center text-sm">
+        <Pagination className="flex justify-between items-center text-xs md:text-sm">
             <PaginationContent>
                 <PaginationItem>
                     <PaginationPrevious href="#" />
@@ -36,8 +35,8 @@ export default function PaginationLinks() {
             <div className="hidden md:flex items-center space-x-3 text-xs font-medium text-primaryDarkBlue">
                 <p>Results</p>
                 <select className="bg-white py-1 px-2 rounded-full">
-                    <option selected>1-10</option>
-                    <option>10-20</option>
+                    <option defaultValue="10">10</option>
+                    <option value="20">20</option>
                 </select>
                 <p>of 100</p>
             </div>

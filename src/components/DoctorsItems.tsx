@@ -12,7 +12,7 @@ export default function DoctorsItems({ doctors, layoutType }:{doctors:IDoctorLis
     return (
       <ul
         className={`grid w-full ${
-          layoutType === "grid" ? "grid-cols-3 gap-6" : "grid-cols-2 gap-2"
+          layoutType === "grid" ? "md:grid-cols-3 gap-6" : "md:grid-cols-2 gap-2"
         } `}
       >
         {doctors.map((doctor) => (

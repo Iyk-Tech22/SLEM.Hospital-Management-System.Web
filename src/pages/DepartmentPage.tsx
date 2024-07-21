@@ -8,8 +8,8 @@ const headers = ["Department Name", "Doctor", "Head of Department", "Status", "A
 
 export default function DepartmentsPage() {
   return (
-    <div className="flex flex-col space-y-6">
-      <div className="w-full flex space-x-4 ">
+    <div className="flex flex-col md:space-y-6">
+      <div className="hidden md:flex w-full space-x-4 ">
         <div className="w-[38%] h-80 shadow-md bg-white rounded-md px-6">
           <header className="flex justify-between items-center py-3">
             <h2 className="font-bold text-lg text-primaryDarkBlue">
@@ -37,16 +37,18 @@ export default function DepartmentsPage() {
       <div className="w-full flex space-x-4">
         <div className="w-full shadow-md bg-white rounded-md px-5">
           <header className="flex justify-between items-center pt-4">
-            <h2 className="font-bold text-lg text-primaryDarkBlue">
+            <h2 className="font-bold text-sm md:text-lg text-primaryDarkBlue">
               Departments List
             </h2>
             <div className="flex items-center space-x-6">
-              <p className="text-sm hover:underline font-semibold cursor-pointer text-primaryBlue">
+              <p className="text-xs md:text-sm hover:underline font-semibold cursor-pointer text-primaryBlue">
                 View All
               </p>
-              <button className="text-sm py-1 px-2 rounded-full bg-[#fff4f3] text-primaryOrange">
-                <Link to="/account/departments/add-department">Add Departments</Link>
-              </button>
+              <Link to="/account/departments/add-department">
+                <button className="text-xs md:text-sm py-1 px-2 rounded-full bg-[#fff4f3] text-primaryOrange">
+                  Add Departments
+                </button>
+              </Link>
             </div>
           </header>
           <main className="mt-6">

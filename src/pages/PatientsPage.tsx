@@ -2,6 +2,8 @@ import { Patients } from "@/data/constant";
 import PaginationLinks from "@/components/PaginationLinks";
 import { PatientsTable } from "@/components/PatientsTable";
 import SearchBar from "@/components/SearchBar";
+import { Link } from "react-router-dom";
+import Button from "@/components/Button";
 
 const headers = [
   "Profile",
@@ -17,16 +19,25 @@ const headers = [
 export default function PatientsPage() {
   return (
     <div>
+      <nav className="mb-4 md:hidden w-full">
+        <PaginationLinks />
+      </nav>
+      <Link
+        to="/account/patients/add-patient"
+        className="block w-full md:hidden"
+      >
+        <Button
+          type="button"
+          styles="w-full mb-4 bg-primaryBlue text-white hover:bg-primaryBlue/90"
+        >
+          +Register Patient
+        </Button>
+      </Link>
       <div className="space-y-5 bg-white rounded-md p-5 shadow-md">
-        {/* <header className="flex justify-between">
-          <h2 className="font-bold text-xl text-primaryDarkBlue">
-            Upcoming Appointments
-          </h2>
-        </header> */}
         <SearchBar placeholder="Search for a patient" />
         <PatientsTable headers={headers} patients={Patients} />
       </div>
-      <nav className="mt-10 w-full">
+      <nav className="mt-10 hidden md:block w-full">
         <PaginationLinks />
       </nav>
     </div>

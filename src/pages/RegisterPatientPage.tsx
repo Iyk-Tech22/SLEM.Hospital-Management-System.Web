@@ -32,11 +32,10 @@ export default function RegisterPatientPage() {
     handleSubmit,
     formState: { errors, isSubmitted, touchedFields },
   } = useForm<RegisterPatientFormInput>({
-    mode: "all", // Trigger validation on blur event
-    reValidateMode: "onSubmit", // Re-validate on submit event
+    mode: "all",
+    reValidateMode: "onSubmit",
   });
-  const onSumbit: SubmitHandler<RegisterPatientFormInput> = (data) =>
-    console.log(data);
+  const onSumbit: SubmitHandler<RegisterPatientFormInput> = (data) => console.log(data);
 
   return (
     <div className="w-full md:max-w-2xl md:mx-auto">
@@ -202,6 +201,7 @@ export default function RegisterPatientPage() {
                 <p className="text-red-500 text-xs">{errors.phone.message}</p>
               )}
             </div>
+
             {/* DESCRIPTION */}
             <div className="grid space-y-2 mt-3">
               <Label name="description" label="Description" required={false} />

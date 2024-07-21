@@ -18,10 +18,11 @@ export default function DoctorsPage() {
     }
 
     return (
-      <div className="flex flex-col justify-between w-full min-h-[calc(100vh-71px)]">
+      <div className="flex flex-col w-full min-h-[calc(100vh-71px)]">
         <div className="flex flex-col space-y-3">
-          <nav className="flex justify-between items-center">
-            <div className="flex space-x-3 items-center">
+          
+          <nav className="flex flex-col md:flex-row justify-between items-center">
+            <div className="hidden md:flex space-x-3 items-center">
               <h2 className="text-lg text-primaryDarkBlue font-bold">View</h2>
               <span
                 className={`cursor-pointer ${
@@ -40,18 +41,24 @@ export default function DoctorsPage() {
                 <FaList className="text-primaryDarkBlue" />
               </span>
             </div>
-            <Button
-              type="button"
-              styles="bg-primaryBlue text-white hover:bg-primaryBlue/90"
-            >
-              <Link to="/account/doctors/add-doctor">+Add Doctor</Link>
-            </Button>
+            <nav className="mb-4 md:hidden w-full">
+              <PaginationLinks />
+            </nav>
+            <Link to="/account/doctors/add-doctor" className="w-full md:w-auto">
+              <Button
+                type="button"
+                styles="w-full md:w-auto md:mt-4 md:mt-0 bg-primaryBlue text-white hover:bg-primaryBlue/90"
+              >
+                +Add Doctor
+              </Button>
+            </Link>
           </nav>
           <main className="w-full">
             <DoctorsItems doctors={Doctors} layoutType={layout} />
           </main>
         </div>
-        <nav className="mt-10 w-full">
+
+        <nav className="mt-10 hidden md:block w-full">
           <PaginationLinks />
         </nav>
 

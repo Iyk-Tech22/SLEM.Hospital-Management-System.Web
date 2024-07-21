@@ -29,8 +29,8 @@ export default function NotificationDropdown({
           <h2 className="text-primaryDarkBlue">You have {notifications.length} new notifications</h2>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {notifications.map((notification) => (
-          <DropdownMenuItem key={notification.title}>
+        {notifications.map((notification, index) => (
+          <DropdownMenuItem key={`${notification.title}-${index}`}>
             <div className="flex  space-x-3">
               <div className="pt-1">
                 <FaMessage className="text-primaryDarkBlue" size={13} />

@@ -79,7 +79,7 @@ export default function DashboardPage() {
             <h2 className="font-bold text-base md:text-lg text-primaryDarkBlue">
               Upcoming Appointments
             </h2>
-            <Link to="/appointments">
+            <Link to="/account/appointments">
               <p className="text-sm hover:underline font-semibold cursor-pointer text-primaryBlue">
                 View All
               </p>
@@ -94,7 +94,7 @@ export default function DashboardPage() {
             <h2 className="font-bold text-base md:text-lg text-primaryDarkBlue">
               Doctor List
             </h2>
-            <Link to="/doctors">
+            <Link to="/account/doctors">
               <p className="text-sm hover:underline font-semibold cursor-pointer text-primaryBlue">
                 View All
               </p>

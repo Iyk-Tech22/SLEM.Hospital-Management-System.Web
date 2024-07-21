@@ -11,7 +11,7 @@ export function PatientsTable({
 }) {
   return (
     <TableData headers={headers}>
-      <TableBody className="space-y-2">
+      <TableBody className="space-y-2 text-xs md:text-base">
         {patients.map((patient) => (
           <TableRow key={patient.name}>
             <TableCell className="font-medium">

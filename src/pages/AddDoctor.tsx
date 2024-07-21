@@ -16,6 +16,7 @@ export default function AddDoctor() {
   return (
     <div className="max-w-2xl mx-auto">
       <h2 className="text-lg font-semibold">Add New Doctor</h2>
+
       {/* DOCTOR BASIC INFORMATION FORM */}
       <form className="grid mt-8">
         {/* BASIC FORM */}
@@ -33,6 +34,7 @@ export default function AddDoctor() {
           </p>
           {selectedForm === "basicForm" && (
             <div className="bg-white px-8 py-4">
+
               {/* FIRST & LAST NAME */}
               <div className="grid grid-cols-2 gap-5 mt-4">
                 <div className="space-y-2">
@@ -52,6 +54,7 @@ export default function AddDoctor() {
                   />
                 </div>
               </div>
+
               {/* PHONE & EMAIL */}
               <div className="grid grid-cols-2 gap-5 mt-4">
                 <div className="space-y-2">
@@ -71,6 +74,7 @@ export default function AddDoctor() {
                   />
                 </div>
               </div>
+              
               {/* GENDER & AGE */}
               <div className="grid grid-cols-2 gap-5 mt-4">
                 <div className="space-y-2">
@@ -92,16 +96,18 @@ export default function AddDoctor() {
                   />
                 </div>
               </div>
+
+
               {/* DATE OF BIRTH && SEPECIALTY */}
               <div className="grid grid-cols-2 gap-5 mt-4">
-                {/* <div className="grid space-y-2">
+                <div className="grid space-y-2">
                   <Label name="dob" label="Date of Birth" required={true} />
                   <DatePicker
                     selected={dateOfBirth}
                     className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                    onChange={(date) => setDateOfBirth(date)}
+                    onChange={(date: Date | null) => setDateOfBirth(date)}
                   />
-                </div> */}
+                </div>
                 <div className="space-y-2">
                   <Label name="speciality" label="Speciality" required={true} />
                   <input
@@ -111,6 +117,7 @@ export default function AddDoctor() {
                   />
                 </div>
               </div>
+
               {/* DESCRIPTION */}
               <div className="grid space-y-2 my-4">
                 <Label
@@ -125,11 +132,12 @@ export default function AddDoctor() {
                   cols={5}
                 ></textarea>
               </div>
-              <Button>Submit</Button>
+              <Button type="submit">Submit</Button>
             </div>
           )}
         </div>
       </form>
+
       {/* DOCTOR ACCOUNT INFORMATION FORM */}
       <form>
         <div className="mt-6">
@@ -157,6 +165,7 @@ export default function AddDoctor() {
                   />
                 </div>
               </div>
+
               {/* PASSWORD & CONFIRM PASSWORD */}
               <div className="grid grid-cols-2 gap-5 mt-4 mb-6">
                 <div className="space-y-2">
@@ -180,11 +189,12 @@ export default function AddDoctor() {
                   />
                 </div>
               </div>
-              <Button>Submit</Button>
+              <Button type="submit">Submit</Button>
             </div>
           )}
         </div>
       </form>
+
       {/* DOCTOR SOCIAL MEDIAL INFO */}
       <form>
         <div className="mt-6">
@@ -201,6 +211,7 @@ export default function AddDoctor() {
           </p>
           {selectedForm === "socialForm" && (
             <div className="bg-white px-8 py-4">
+
               {/* FACEBOOK & TWITTER */}
               <div className="grid grid-cols-2 gap-5 mt-4 mb-6">
                 <div className="space-y-2">
@@ -226,6 +237,7 @@ export default function AddDoctor() {
                   />
                 </div>
               </div>
+
               {/* LINKEDLN && INSTAGRAM */}
               <div className="grid grid-cols-2 gap-5 mt-4 mb-6">
                 <div className="space-y-2">
@@ -251,7 +263,7 @@ export default function AddDoctor() {
                   />
                 </div>
               </div>
-              <Button>Submit</Button>
+              <Button type="submit">Submit</Button>
             </div>
           )}
         </div>

@@ -14,8 +14,8 @@ const AccountSettings = () => {
   return (
     <div className="w-full h-[calc(100vh)] flex md:justify-center md:items-center">
       <div className="w-full md:w-1/3 mx-auto bg-white p-8 rounded-md shadow">
-        <h2 className="text-2xl font-semibold mb-4">Change Password</h2>
-        <div className="mb-4">
+        <h2 className="text-lg md:text-2xl font-semibold mb-4">Change Password</h2>
+        <div className="mb-4 text-sm: md:text-base">
           <label htmlFor="old-password" className="block text-gray-700">
             Old Password
           </label>
@@ -27,7 +27,7 @@ const AccountSettings = () => {
             onChange={(e) => setOldPassword(e.target.value)}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 text-sm md:text-base">
           <label htmlFor="new-password" className="block text-gray-700">
             New Password
           </label>
@@ -51,7 +51,7 @@ const AccountSettings = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        <div className="flex flex-col md:flex-row md:space-x-4">
+        <div className="flex flex-col md:flex-row md:space-x-4 text-xs md:text-sm">
           <button
             onClick={handlePasswordChange}
             className="w-full md:w-auto mt-4 bg-primaryBlue text-white py-2 px-3 rounded-md hover:bg-primaryBlue/90 focus:outline focus:ring-primaryBlue"

@@ -10,7 +10,7 @@ import ActionButtons from './ActionButtons';
 export default function DepartmentsTable({headers, departments}:{headers:string[], departments: IDepartments[]}) {
     return (
         <TableData headers={headers}>
-            <TableBody className="space-y-2">
+            <TableBody className="space-y-2 text-xs md:text-sm">
                 {
                     departments.map(department => (
                         <TableRow key={department.doctor}>

@@ -53,7 +53,7 @@ export default function DashboardLayout() {
               + Register Patient
             </Link>
             <Link
-              to="setting"
+              to="/account/account-setting"
               className="flex justify-center md:justify-start space-x-3"
             >
               <img src={settingIcon} alt="setting" />

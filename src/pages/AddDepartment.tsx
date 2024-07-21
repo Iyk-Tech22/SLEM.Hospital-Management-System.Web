@@ -11,11 +11,13 @@ export default function AddDepartment() {
       <div className="max-w-2xl mx-auto">
         <h2 className="text-lg font-semibold">New Patient</h2>
         <form className="grid mt-8">
+          
           {/* BASIC FORM */}
           <div>
             <p className="w-full text-sm font-medium text-white bg-primaryBlue p-3">
               Basic Information
             </p>
+
             {/* FIRST & LAST NAME */}
             <div className="grid grid-cols-2 gap-5 mt-4">
               <div className="space-y-2">
@@ -35,6 +37,7 @@ export default function AddDepartment() {
                 />
               </div>
             </div>
+
             {/* PHONE & EMAIL */}
             <div className="grid grid-cols-2 gap-5 mt-4">
               <div className="space-y-2">
@@ -54,6 +57,7 @@ export default function AddDepartment() {
                 />
               </div>
             </div>
+
             {/* GENDER & AGE */}
             <div className="grid grid-cols-2 gap-5 mt-4">
               <div className="space-y-2">
@@ -75,15 +79,17 @@ export default function AddDepartment() {
                 />
               </div>
             </div>
+
             {/* Date */}
-            {/* <div className="grid space-y-2 mt-4">
+            <div className="grid space-y-2 mt-4">
               <Label name="date" label="Date" required={true} />
               <DatePicker
                 selected={date}
                 className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                onChange={(date) => setDate(date)}
+                onChange={(date: Date | null) => setDate(date)}
               />
-            </div> */}
+            </div>
+
             {/* DESCRIPTION */}
             <div className="grid space-y-2 mt-4">
               <Label name="description" label="Description" required={false} />
@@ -95,11 +101,14 @@ export default function AddDepartment() {
               ></textarea>
             </div>
           </div>
+
+
           {/* REGISTRATION FORM */}
           <div className="mt-6">
             <p className="w-full text-sm font-medium text-white bg-primaryBlue p-3">
               Registration Information
             </p>
+
             {/* DOCTOR NAME & STAFF ON DUTY */}
             <div className="grid grid-cols-2 gap-5 mt-4">
               <div className="space-y-2">
@@ -123,6 +132,7 @@ export default function AddDepartment() {
                 />
               </div>
             </div>
+
             {/* WARD NO. & DATE */}
             <div className="grid grid-cols-2 gap-5 mt-4 mb-6">
               <div className="space-y-2">
@@ -133,17 +143,17 @@ export default function AddDepartment() {
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                 />
               </div>
-              {/* <div className="grid space-y-2">
+              <div className="grid space-y-2">
                 <Label name="chooseDate" label="Choose Date" required={true} />
                 <DatePicker
                   selected={chooseDate}
                   className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                  onChange={(date) => setChooseDate(date)}
+                  onChange={(date: Date | null) => setChooseDate(date)}
                 />
-              </div> */}
+              </div>
             </div>
           </div>
-          <Button>Submit</Button>
+          <Button type="submit">Submit</Button>
         </form>
       </div>
     );
