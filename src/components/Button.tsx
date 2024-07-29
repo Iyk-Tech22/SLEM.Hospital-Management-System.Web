@@ -9,7 +9,7 @@ export default function Button({ children, styles, type }
     return (
         <button
             type={type}
-            className={clsx("px-4 py-2 font-medium rounded-md text-sm", styles)}>
+            className={clsx("w-full md:w-auto px-4 py-2 font-medium rounded-md text-sm", styles)}>
             {children}
         </button>
     )

@@ -2,8 +2,13 @@ import Button from "@/components/Button";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import Label from "../components/Label";
+import {
+  sanitizeToLetters,
+  sanitizeToPhoneNumber,
+} from "@/utils/helperFunctions";
+
 
 enum GenderEnum {
   female = "female",
@@ -30,17 +35,24 @@ export default function RegisterPatientPage() {
   const {
     register,
     handleSubmit,
+    setValue,
+    trigger,
+    reset,
     formState: { errors, isSubmitted, touchedFields },
   } = useForm<RegisterPatientFormInput>({
     mode: "all",
     reValidateMode: "onSubmit",
   });
-  const onSumbit: SubmitHandler<RegisterPatientFormInput> = (data) => console.log(data);
+
+ function onSubmitHandler(data) {
+    console.log({ data });
+    reset();
+  }
 
   return (
     <div className="w-full md:max-w-2xl md:mx-auto">
       <h2 className="text-lg md:text-xl font-semibold">New Patient</h2>
-      <form className="grid mt-8" onSubmit={handleSubmit(onSumbit)}>
+      <form className="grid mt-8" onSubmit={handleSubmit(onSubmitHandler)}>
         {/* BASIC FORM */}
         <div>
           <p className="w-full text-sm font-medium text-white bg-primaryBlue p-3">
@@ -66,7 +78,12 @@ export default function RegisterPatientPage() {
                   id="firstName"
                   type="text"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  onChange={(e) => {
+                    setValue("firstName", sanitizeToLetters(e.target.value));
+                    trigger("firstName");
+                  }}
                 />
+
                 {errors.firstName && (
                   <p className="text-red-500 text-xs">
                     {errors.firstName.message}
@@ -90,6 +107,10 @@ export default function RegisterPatientPage() {
                   id="lastName"
                   type="text"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  onChange={(e) => {
+                    setValue("lastName", sanitizeToLetters(e.target.value));
+                    trigger("lastName");
+                  }}
                 />
                 {errors.lastName && (
                   <p className="text-red-500 text-xs">
@@ -100,7 +121,7 @@ export default function RegisterPatientPage() {
             </div>
 
             {/* PHONE & EMAIL */}
-            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5 md:mt-3">
+            <div className="grid md:grid-cols-2 md:gap-5 md:mt-3">
               <div className="space-y-2 mt-3 md:mt-0">
                 <Label name="email" label="Email" required={true} />
                 <input
@@ -140,6 +161,10 @@ export default function RegisterPatientPage() {
                   id="phone"
                   type="tel"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  onChange={(e) => {
+                    setValue("phone", sanitizeToPhoneNumber(e.target.value));
+                    trigger("phone");
+                  }}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-xs">{errors.phone.message}</p>
@@ -167,18 +192,24 @@ export default function RegisterPatientPage() {
                   </p>
                 )}
               </div>
+
+              {/* AGE */}
               <div className="space-y-2 mt-3 md:mt-0">
                 <Label name="age" label="Age" required={true} />
                 <input
                   {...register("age", {
                     required: "This field is required",
-                    pattern: {
-                      value: /^\d+$/,
-                      message: "Age must be a number",
+                    min: {
+                      value: 25,
+                      message: "Mininum age must be 25",
+                    },
+                    max: {
+                      value: 80,
+                      message: "Maximum age must be 80",
                     },
                   })}
                   id="age"
-                  type="text"
+                  type="number"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                 />
                 {errors.age && (
@@ -190,15 +221,13 @@ export default function RegisterPatientPage() {
             {/* Date */}
             <div className="grid space-y-2 mt-3">
               <Label name="date" label="Date" required={true} />
-
               <DatePicker
                 selected={date}
                 className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                 onChange={(date: Date | null) => setDate(date)}
               />
-
-              {(isSubmitted || touchedFields) && errors.date && (
-                <p className="text-red-500 text-xs">{errors.phone.message}</p>
+              {errors.date && (
+                <p className="text-red-500 text-xs">{errors.date.message}</p>
               )}
             </div>
 
@@ -241,6 +270,13 @@ export default function RegisterPatientPage() {
                   id="doctorName"
                   type="text"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  onChange={(e) => {
+                    setValue(
+                      "doctorName",
+                      sanitizeToLetters(e.target.value)
+                    );
+                    trigger("doctorName");
+                  }}
                 />
                 {errors.doctorName && (
                   <p className="text-red-500 text-xs">
@@ -270,6 +306,13 @@ export default function RegisterPatientPage() {
                   id="staffOnDuty"
                   type="text"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  onChange={(e) => {
+                    setValue(
+                      "staffOnDuty",
+                      sanitizeToLetters(e.target.value)
+                    );
+                    trigger("staffOnDuty");
+                  }}
                 />
                 {errors.staffOnDuty && (
                   <p className="text-red-500 text-xs">
@@ -298,6 +341,10 @@ export default function RegisterPatientPage() {
                   id="wardNo"
                   type="number"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  onChange={(e) => {
+                    setValue("wardNo", sanitizeToPhoneNumber(e.target.value));
+                    trigger("wardNo");
+                  }}
                 />
                 {(isSubmitted || touchedFields) && errors.wardNo && (
                   <p className="text-red-500 text-xs">

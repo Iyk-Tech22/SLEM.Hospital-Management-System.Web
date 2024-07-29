@@ -419,6 +419,11 @@ const Patients: IPatients[] = [
   },
 ];
 
+enum GenderEnum {
+  female = "female",
+  male = "male",
+}
+
 export {
   DashboardNavLinks,
   DashboardStats,
@@ -429,5 +434,6 @@ export {
   DepartmentsData,
   LineChartData,
   Patients,
-  Status
+  Status,
+  GenderEnum,
 };

@@ -3,6 +3,9 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 
 function EditProfile({onCloseEditProfile}:{onCloseEditProfile:any}) {
   const [formValues, setFormValues] = useState({
@@ -99,7 +102,7 @@ function EditProfile({onCloseEditProfile}:{onCloseEditProfile:any}) {
       </h2>
       <form
         onSubmit={handleSubmit}
-        className="text-xs md:text-sm text-primaryDarkBlue font-medium"
+        className="text-xs md:text-sm  font-medium"
       >
         <div className="mb-6">
           <h3 className="text-sm md:text-base text-primaryBlue font-semibold mb-1">
@@ -239,9 +242,9 @@ function EditProfile({onCloseEditProfile}:{onCloseEditProfile:any}) {
             <div>
               <label
                 htmlFor="facebook"
-                className="flex space-x-2 items-center text-primaryDarkBlue text-sm mb-1"
+                className="flex space-x-2 items-center  text-sm mb-1"
               >
-                <FaFacebook className="text-primaryDarkBlue" size={15} />
+                <FaFacebook className="" size={15} />
                 <span>Facebook</span>
               </label>
 
@@ -261,9 +264,9 @@ function EditProfile({onCloseEditProfile}:{onCloseEditProfile:any}) {
             <div>
               <label
                 htmlFor="instagram"
-                className="flex space-x-2 items-center text-primaryDarkBlue text-sm mb-1"
+                className="flex space-x-2 items-center  text-sm mb-1"
               >
-                <FaInstagram className="text-primaryDarkBlue" size={15} />
+                <FaInstagram className="" size={15} />
                 <span>Instagram</span>
               </label>
 
@@ -283,9 +286,9 @@ function EditProfile({onCloseEditProfile}:{onCloseEditProfile:any}) {
             <div>
               <label
                 htmlFor="twitter"
-                className="flex space-x-2 items-center text-primaryDarkBlue text-sm mb-1"
+                className="flex space-x-2 items-center  text-sm mb-1"
               >
-                <FaTwitter className="text-primaryDarkBlue" size={15} />
+                <FaTwitter className="" size={15} />
                 <span>Twitter</span>
               </label>
 
@@ -305,9 +308,9 @@ function EditProfile({onCloseEditProfile}:{onCloseEditProfile:any}) {
             <div>
               <label
                 htmlFor="linkedin"
-                className="flex space-x-2 items-center text-primaryDarkBlue text-sm mb-1"
+                className="flex space-x-2 items-center  text-sm mb-1"
               >
-                <FaLinkedin className="text-primaryDarkBlue" size={15} />
+                <FaLinkedin className="" size={15} />
                 <span>LinkedIn</span>
               </label>
 
