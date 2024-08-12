@@ -95,6 +95,29 @@ export const registerPatientSchema = yup.object().shape({
 
 })
 
+// DEPARTMENT FORM SCHEMA
+
+export const departmentFormSchema =  yup.object().shape({
+
+departmentName: yup
+.string()
+.required("Department name is required")
+.min(3,"Department name must be at least 3 characters")
+.matches(/^[A-Za-z]+$/,"Department name must contain letters only"),
+doctor: yup
+.string()
+.required("Doctor name is required")
+.min(3,"Doctor name must be at least 3 characters")
+.matches(/^[A-Za-z]+$/,"Doctor name must contain letters only"),
+headDepartment: yup
+.string()
+.oneOf(['0','1','2','3','4','5'], 'invalid name')
+.required('Head of department is required'),
+status: yup
+.string()
+.oneOf(['active','inactive'], 'invalid status')
+.required('Status is required'),
+})
 // SOCIAL SCHEMA
 export const socialSchema = yup.object().shape({
   facebook: yup.string().url("Invalid URL"),
