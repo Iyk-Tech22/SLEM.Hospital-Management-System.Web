@@ -59,7 +59,7 @@ export default function AccountForm({
             {/* USERNAME NAME & STAFF ON DUTY */}
             <div className="grid mt-4">
               <div className="space-y-2">
-                <Label name="username" label="Username" required={true} />
+                <Label name="username" label="Username" className="text-xs text-red-600" required={true} />
                 <input
                   {...register("username")}
                   id="username"
@@ -83,7 +83,7 @@ export default function AccountForm({
             {/* PASSWORD & CONFIRM PASSWORD */}
             <div className="grid md:grid-cols-2 gap-5 mt-4 mb-6">
               <div className="space-y-2">
-                <Label name="password" label="Password" required={true} />
+                <Label name="password" label="Password" className="text-xs text-red-600" required={true} />
                 <input
                   {...register("password")}
                   id="password"
@@ -102,6 +102,7 @@ export default function AccountForm({
                 <Label
                   name="confirmPassword"
                   label="Confirm Password"
+                  className="text-xs text-red-600"
                   required={true}
                 />
                 <input
