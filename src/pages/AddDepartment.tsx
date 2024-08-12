@@ -52,12 +52,15 @@ export default function AddDepartment() {
               </div>
               <div className="space-y-2">
                 <Label name="doctor" label="Doctor" className="text-xs text-red-600" required={true} />
-                <input
+                <select
                   id="doctor"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  className="w-full border border-gray-300 p-2  focus-visible:outline-primaryBlue"
                   {...register('doctor')}
-                />
+                >
+                   {options.map((option,index)=>{
+                    return <option key={index} value={index}>{option.headDepartment}</option>
+                  })} 
+                  </select>
                  {/* ERROR MESSAGE */}
                  {errors.doctor && (
                   <p className="text-red-500 text-xs">
