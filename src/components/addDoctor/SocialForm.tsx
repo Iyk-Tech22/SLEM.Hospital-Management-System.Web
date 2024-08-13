@@ -9,6 +9,11 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { socialSchema } from "./formSchemas";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { ChangeEvent } from "react";
+import Input from '@/components/Input';
+import {
+  sanitizeToLetters,
+} from "@/utils/helperFunctions";
 
 
 export default function SocialForm({
@@ -22,6 +27,8 @@ export default function SocialForm({
   const {
     reset,
     register,
+    setValue,
+    trigger,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -62,13 +69,17 @@ export default function SocialForm({
               <div className="space-y-2">
                 <div className="flex items-center space-x-3">
                   <FaFacebook className="text-primaryBlue text-base" />
-                  <Label name="facebook" label="Facebook" required={false} />
+                  <Label name="facebook" label="Facebook" className="text-xs text-red-600" required={false} />
                 </div>
-                <input
+                <Input
                   {...register("facebook")}
                   id="facebook"
                   type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  className="w-full border border-gray-300 p-2 focus- visible:outline-primaryBlue"
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
+                    setValue("facebook", sanitizeToLetters(e.target.value));
+                    trigger("facebook");
+                  }}
                 />
 
                 {/* ERROR MESSAGE */}
@@ -81,13 +92,17 @@ export default function SocialForm({
               <div className="grid space-y-2">
                 <div className="flex items-center space-x-3">
                   <FaTwitter className="text-primaryBlue text-base" />
-                  <Label name="twitter" label="Twitter" required={false} />
+                  <Label name="twitter" label="Twitter" required={false} className="text-xs text-red-600" />
                 </div>
-                <input
+                <Input
                   {...register("twitter")}
                   id="twitter"
                   type="text"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
+                    setValue("twitter", sanitizeToLetters(e.target.value));
+                    trigger("twitter");
+                  }}
                 />
                 
                 {/* ERROR MESSAGE */}
@@ -104,13 +119,17 @@ export default function SocialForm({
               <div className="space-y-2">
                 <div className="flex items-center space-x-3">
                   <FaLinkedinIn className="text-primaryBlue text-base" />
-                  <Label name="linkedin" label="Linkedin" required={false} />
+                  <Label name="linkedin" label="Linkedin" className="text-xs text-red-600" required={false} />
                 </div>
-                <input
+                <Input
                   {...register("linkedin")}
                   id="linkedin"
                   type="text"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
+                    setValue("linkedin", sanitizeToLetters(e.target.value));
+                    trigger("linkedin");
+                  }}
                 />
                 
                 {/* ERROR MESSAGE */}
@@ -123,13 +142,17 @@ export default function SocialForm({
               <div className="grid space-y-2">
                 <div className="flex items-center space-x-3">
                   <FaInstagram className="text-primaryBlue text-base" />
-                  <Label name="instagram" label="Instagram" required={false} />
+                  <Label name="instagram" label="Instagram" className="text-xs text-red-600" required={false} />
                 </div>
-                <input
+                <Input
                   {...register("instagram")}
                   id="instagram"
                   type="text"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
+                    setValue("linkedin", sanitizeToLetters(e.target.value));
+                    trigger("linkedin");
+                  }}
                 />
                 
                 {/* ERROR MESSAGE */}
