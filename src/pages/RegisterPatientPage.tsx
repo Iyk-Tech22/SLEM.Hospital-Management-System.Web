@@ -44,6 +44,7 @@ export default function RegisterPatientPage() {
     reValidateMode: "onSubmit",
   });
 
+  
  function onSubmitHandler(data) {
     console.log({ data });
     reset();
