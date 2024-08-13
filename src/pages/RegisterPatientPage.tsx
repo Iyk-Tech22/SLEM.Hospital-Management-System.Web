@@ -1,59 +1,41 @@
 import Button from "@/components/Button";
-import { useState } from "react";
+import { useState, ChangeEvent} from "react";
+import Input from "@/components/Input";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { registerPatientSchema } from "../components/addDoctor/formSchemas";
 import Label from "../components/Label";
 import {
   sanitizeToLetters,
   sanitizeToPhoneNumber,
+  sanitizeToEmail
 } from "@/utils/helperFunctions";
 
 
-enum GenderEnum {
-  female = "female",
-  male = "male",
-}
-
-interface RegisterPatientFormInput {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: number;
-  gender: GenderEnum;
-  age: number;
-  doctorName: string;
-  staffOnDuty: string;
-  wardNo: number;
-  date: Date;
-}
 
 export default function RegisterPatientPage() {
+
   const [date, setDate] = useState<Date | null>(null);
   const [chooseDate, setChooseDate] = useState<Date | null>(null);
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    trigger,
-    reset,
-    formState: { errors, isSubmitted, touchedFields },
-  } = useForm<RegisterPatientFormInput>({
-    mode: "all",
-    reValidateMode: "onSubmit",
+  const { register, handleSubmit,reset,setValue,trigger, formState: { errors } } = useForm({
+    resolver: yupResolver(registerPatientSchema)
   });
+  const onSubmit = data => {
+    console.log("Form is about to be submitted");
+    console.log(data);
+    reset()
+  };
 
-  
- function onSubmitHandler(data) {
-    console.log({ data });
-    reset();
-  }
-
+  // useEffect(() => {
+  //   console.log(errors);
+  // }, [errors]);
   return (
     <div className="w-full md:max-w-2xl md:mx-auto">
       <h2 className="text-lg md:text-xl font-semibold">New Patient</h2>
-      <form className="grid mt-8" onSubmit={handleSubmit(onSubmitHandler)}>
+      <form className="grid mt-8" onSubmit={handleSubmit(onSubmit)}>
         {/* BASIC FORM */}
         <div>
           <p className="w-full text-sm font-medium text-white bg-primaryBlue p-3">
@@ -63,26 +45,25 @@ export default function RegisterPatientPage() {
             {/* FIRST & LAST NAME */}
             <div className="grid md:grid-cols-2 md:gap-5">
               <div className="space-y-2">
-                <Label name="firstName" label="First Name" required={true} />
-                <input
-                  {...register("firstName", {
-                    required: "First name is required",
-                    minLength: {
-                      value: 3,
-                      message: "First name must be at least 3 characters",
-                    },
-                    pattern: {
-                      value: /^[A-Za-z]+$/,
-                      message: "First name must contain letters only",
-                    },
-                  })}
+                <Label name="firstName" label="First Name" required={true} className="text-xs text-red-600" />
+                <Input
+                 
                   id="firstName"
                   type="text"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                  onChange={(e) => {
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
                     setValue("firstName", sanitizeToLetters(e.target.value));
                     trigger("firstName");
+                    
+                    // // console.log(e.target.value);
+                    // // const sanitizedValue = e.target.value;
+                    // // setValue("firstName", sanitizedValue);
+                    // // trigger("firstName");
+          
+                    // console.log(e.target.value); 
+                    
                   }}
+                  {...register("firstName")}
                 />
 
                 {errors.firstName && (
@@ -92,26 +73,18 @@ export default function RegisterPatientPage() {
                 )}
               </div>
               <div className="space-y-2 mt-3 md:mt-0">
-                <Label name="lastName" label="Last Name" required={true} />
-                <input
-                  {...register("lastName", {
-                    required: "Last name is required",
-                    minLength: {
-                      value: 3,
-                      message: "Last name must be at least 3 characters",
-                    },
-                    pattern: {
-                      value: /^[A-Za-z]+$/,
-                      message: "Last name must contain letters only",
-                    },
-                  })}
+                <Label name="lastName" label="Last Name" className="text-xs text-red-600" required={true} />
+                <Input
+                  
                   id="lastName"
                   type="text"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                  onChange={(e) => {
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
                     setValue("lastName", sanitizeToLetters(e.target.value));
                     trigger("lastName");
+                  
                   }}
+                  {...register("lastName")}
                 />
                 {errors.lastName && (
                   <p className="text-red-500 text-xs">
@@ -124,48 +97,36 @@ export default function RegisterPatientPage() {
             {/* PHONE & EMAIL */}
             <div className="grid md:grid-cols-2 md:gap-5 md:mt-3">
               <div className="space-y-2 mt-3 md:mt-0">
-                <Label name="email" label="Email" required={true} />
-                <input
-                  {...register("email", {
-                    required: "Email is required",
-                    pattern: {
-                      value: /^\S+@\S+$/i,
-                      message: "Entered value does not match email format",
-                    },
-                  })}
+                <Label name="email" label="Email" className="text-xs text-red-600" required={true} />
+                <Input
+                  
                   id="email"
                   type="email"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
+                    setValue("email", sanitizeToEmail(e.target.value));
+                    trigger("email");
+                  
+                  }}
+                  {...register("email")}
                 />
-                {(isSubmitted || touchedFields) && errors.email && (
+                {errors.email && (
                   <p className="text-red-500 text-xs">{errors.email.message}</p>
                 )}
               </div>
               <div className="space-y-2 mt-3 md:mt-0">
-                <Label name="phone" label="Phone No." required={true} />
-                <input
-                  {...register("phone", {
-                    required: "Phone number is required",
-                    pattern: {
-                      value: /^\d{1,11}$/,
-                      message: "Phone number must be digits only",
-                    },
-                    minLength: {
-                      value: 11,
-                      message: "Phone number cannot be less than 11 digits",
-                    },
-                    maxLength: {
-                      value: 11,
-                      message: "Phone number cannot exceed 11 digits",
-                    },
-                  })}
+                <Label name="phone" label="Phone No." className="text-xs text-red-600" required={true} />
+                <Input
+                  
                   id="phone"
                   type="tel"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                  onChange={(e) => {
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
                     setValue("phone", sanitizeToPhoneNumber(e.target.value));
                     trigger("phone");
+                 
                   }}
+                  {...register("phone")}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-xs">{errors.phone.message}</p>
@@ -176,13 +137,12 @@ export default function RegisterPatientPage() {
             {/* GENDER & AGE */}
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5 md:mt-3">
               <div className="space-y-2 mt-3 md:mt-0">
-                <Label name="gender" label="Gender" required={true} />
+                <Label name="gender" label="Gender" className="text-xs text-red-600" required={true} />
                 <select
-                  {...register("gender", {
-                    required: "This field is required",
-                  })}
+                  
                   id="gender"
                   className="w-full border border-gray-300 p-2  focus-visible:outline-primaryBlue"
+                  {...register("gender")}
                 >
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -196,22 +156,18 @@ export default function RegisterPatientPage() {
 
               {/* AGE */}
               <div className="space-y-2 mt-3 md:mt-0">
-                <Label name="age" label="Age" required={true} />
-                <input
-                  {...register("age", {
-                    required: "This field is required",
-                    min: {
-                      value: 25,
-                      message: "Mininum age must be 25",
-                    },
-                    max: {
-                      value: 80,
-                      message: "Maximum age must be 80",
-                    },
-                  })}
+                <Label name="age" label="Age" className="text-xs text-red-600" required={true} />
+                <Input
+                 
                   id="age"
                   type="number"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
+                    setValue("age", sanitizeToPhoneNumber(e.target.value));
+                    trigger("age");
+                 
+                  }}
+                  {...register("age")}
                 />
                 {errors.age && (
                   <p className="text-red-500 text-xs">{errors.age.message}</p>
@@ -221,20 +177,21 @@ export default function RegisterPatientPage() {
 
             {/* Date */}
             <div className="grid space-y-2 mt-3">
-              <Label name="date" label="Date" required={true} />
+              <Label name="date" label="Date" className="text-xs text-red-600" required={true} />
               <DatePicker
+           
+
                 selected={date}
                 className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                 onChange={(date: Date | null) => setDate(date)}
+              
               />
-              {errors.date && (
-                <p className="text-red-500 text-xs">{errors.date.message}</p>
-              )}
+              
             </div>
 
             {/* DESCRIPTION */}
             <div className="grid space-y-2 mt-3">
-              <Label name="description" label="Description" required={false} />
+              <Label name="description" label="Description" className="text-xs text-red-600" required={false} />
               <textarea
                 className="w-full border border-gray-300 py-2 px-3 focus-visible:outline-primaryBlue"
                 id="description"
@@ -255,29 +212,18 @@ export default function RegisterPatientPage() {
             {/* DOCTOR NAME & STAFF ON DUTY */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="space-y-2 mt-3 md:mt-0">
-                <Label name="doctorName" label="Doctor" required={true} />
-                <input
-                  {...register("doctorName", {
-                    required: "Doctor name is required",
-                    minLength: {
-                      value: 3,
-                      message: "Doctor name must be at least 3 characters",
-                    },
-                    pattern: {
-                      value: /^[A-Za-z]+$/,
-                      message: "Doctor name must contain letters only",
-                    },
-                  })}
+                <Label name="doctorName" label="Doctor" className="text-xs text-red-600" required={true} />
+                <Input
+                  
                   id="doctorName"
                   type="text"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                  onChange={(e) => {
-                    setValue(
-                      "doctorName",
-                      sanitizeToLetters(e.target.value)
-                    );
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
+                    setValue("doctorName", sanitizeToLetters(e.target.value));
                     trigger("doctorName");
+          
                   }}
+                  {...register("doctorName")}
                 />
                 {errors.doctorName && (
                   <p className="text-red-500 text-xs">
@@ -289,31 +235,20 @@ export default function RegisterPatientPage() {
                 <Label
                   name="staffOnDuty"
                   label="Staff On Duty"
+                  className="text-xs text-red-600"
                   required={true}
                 />
-                <input
-                  {...register("staffOnDuty", {
-                    required: "Staff on duty name is required",
-                    minLength: {
-                      value: 3,
-                      message:
-                        "Staff on duty name must be at least 3 characters",
-                    },
-                    pattern: {
-                      value: /^[A-Za-z]+$/,
-                      message: "Staff on duty name must contain letters only",
-                    },
-                  })}
+                <Input
+                  
                   id="staffOnDuty"
                   type="text"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                  onChange={(e) => {
-                    setValue(
-                      "staffOnDuty",
-                      sanitizeToLetters(e.target.value)
-                    );
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
+                    setValue("staffOnDuty", sanitizeToLetters(e.target.value));
                     trigger("staffOnDuty");
+                    
                   }}
+                  {...register("staffOnDuty")}
                 />
                 {errors.staffOnDuty && (
                   <p className="text-red-500 text-xs">
@@ -326,40 +261,36 @@ export default function RegisterPatientPage() {
             {/* WARD NO. & DATE */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-4 mb-6">
               <div className="space-y-2 mt-3 md:mt-0">
-                <Label name="wardNo" label=" Ward No." required={true} />
-                <input
-                  {...register("wardNo", {
-                    required: "Ward number is required",
-                    pattern: {
-                      value: /^\d{1,11}$/,
-                      message: "Ward number must be digits only",
-                    },
-                    minLength: {
-                      value: 5,
-                      message: "Ward number cannot be less than 11 digits",
-                    },
-                  })}
+                <Label name="wardNo" label=" Ward No." className="text-xs text-red-600" required={true} />
+                <Input
+                  
                   id="wardNo"
                   type="number"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                  onChange={(e) => {
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
                     setValue("wardNo", sanitizeToPhoneNumber(e.target.value));
                     trigger("wardNo");
+             
                   }}
+                  {...register("wardNo")}
                 />
-                {(isSubmitted || touchedFields) && errors.wardNo && (
+                {errors.wardNo && (
                   <p className="text-red-500 text-xs">
                     {errors.wardNo.message}
                   </p>
                 )}
               </div>
               <div className="grid space-y-2 mt-3 md:mt-0">
-                <Label name="chooseDate" label="Choose Date" required={true} />
+                <Label name="chooseDate" label="Choose Date" className="text-xs text-red-600" required={true} />
+      
                 <DatePicker
+                
+
                   selected={chooseDate}
                   className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
                   onChange={(newDate: Date | null) => setChooseDate(newDate)}
                 />
+               
               </div>
             </div>
           </div>

@@ -1,158 +1,118 @@
 import Button from "@/components/Button";
 import Label from "@/components/Label";
-import { useState } from "react";
-import DatePicker from "react-datepicker";
+import { DepartmentsData } from "@/data/constant";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { departmentFormSchema } from "../components/addDoctor/formSchemas";
+// import {
+//   sanitizeToLetters,
+// } from "@/utils/helperFunctions";
+// import { ChangeEvent } from "react";
+
 
 export default function AddDepartment() {
-    const [date, setDate] = useState<Date | null>(null);
-    const [chooseDate, setChooseDate] = useState<Date | null>(null);
+  const options = DepartmentsData
+  const { register, handleSubmit,reset, formState: { errors } } = useForm({mode: "all",
+    reValidateMode: "onSubmit",
+    resolver: yupResolver(departmentFormSchema)
+  });
+  const onSubmit = data => {
+    console.log(data);
+    reset()
+  };
+  
 
     return (
       <div className="max-w-2xl mx-auto">
-        <h2 className="text-lg font-semibold">New Patient</h2>
-        <form className="grid mt-8">
+        <h2 className="text-lg font-semibold">Add Department</h2>
+        <form className="grid mt-8" onSubmit={handleSubmit(onSubmit)}>
           
           {/* BASIC FORM */}
           <div>
             <p className="w-full text-sm font-medium text-white bg-primaryBlue p-3">
-              Basic Information
+              Department Information
             </p>
 
-            {/* FIRST & LAST NAME */}
+            {/* DEPARTMENT NAME & DOCTOR NAME */}
             <div className="grid grid-cols-2 gap-5 mt-4">
               <div className="space-y-2">
-                <Label name="firstName" label="First Name" required={true} />
+                <Label name="departmentName" label="Department Name" className="text-xs text-red-600" required={true} />
                 <input
-                  id="firstName"
+                  id="departmentName"
                   type="text"
                   className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
+                  {...register('departmentName')}
                 />
+                 {/* ERROR MESSAGE */}
+                 {errors.departmentName && (
+                  <p className="text-red-500 text-xs">
+                    {errors.departmentName.message}
+                  </p>
+                )}
               </div>
               <div className="space-y-2">
-                <Label name="lastName" label="Last Name" required={true} />
-                <input
-                  id="lastName"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
-              </div>
-            </div>
-
-            {/* PHONE & EMAIL */}
-            <div className="grid grid-cols-2 gap-5 mt-4">
-              <div className="space-y-2">
-                <Label name="email" label="Email" required={true} />
-                <input
-                  id="email"
-                  type="email"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label name="phone" label="Phone No." required={true} />{" "}
-                <input
-                  id="phone"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
-              </div>
-            </div>
-
-            {/* GENDER & AGE */}
-            <div className="grid grid-cols-2 gap-5 mt-4">
-              <div className="space-y-2">
-                <Label name="gender" label="Gender" required={true} />
+                <Label name="doctor" label="Doctor" className="text-xs text-red-600" required={true} />
                 <select
-                  id="gender"
+                  id="doctor"
                   className="w-full border border-gray-300 p-2  focus-visible:outline-primaryBlue"
+                  {...register('doctor')}
                 >
-                  <option>Male</option>
-                  <option>Female</option>
+                   {options.map((option,index)=>{
+                    return <option key={index} value={index}>{option.headDepartment}</option>
+                  })} 
+                  </select>
+                 {/* ERROR MESSAGE */}
+                 {errors.doctor && (
+                  <p className="text-red-500 text-xs">
+                    {errors.doctor.message}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* HEAD OF DEPARTMENT NAME & STATUS */}
+            <div className="grid grid-cols-2 gap-5 mt-4 mb-4">
+            <div className="space-y-2">
+                <Label name="headDepartment" label="Head Department" className="text-xs text-red-600" required={true} />
+                <select
+                  id="headDepartment"
+                  className="w-full border border-gray-300 p-2  focus-visible:outline-primaryBlue"
+                  {...register('headDepartment')}
+                >
+                   {options.map((option,index)=>{
+                    return <option key={index} value={index}>{option.headDepartment}</option>
+                  })} 
+                  </select>
+                   {/* ERROR MESSAGE */}
+                 {errors.headDepartment && (
+                  <p className="text-red-500 text-xs">
+                    {errors.headDepartment.message}
+                  </p>
+                )}
+              </div>
+              <div className="space-y-2">
+                <Label name="status" label="Status" className="text-xs text-red-600" required={true} />
+                <select
+                  id="status"
+                  className="w-full border border-gray-300 p-2  focus-visible:outline-primaryBlue"
+                  {...register('status')}
+                >
+                  <option value='active'>Active</option>
+                  <option value='inactive'>Inactive</option>
                 </select>
+                 {/* ERROR MESSAGE */}
+                 {errors.status && (
+                  <p className="text-red-500 text-xs">
+                    {errors.status.message}
+                  </p>
+                )}
               </div>
-              <div className="space-y-2">
-                <Label name="age" label="Age" required={true} />
-                <input
-                  id="age"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
-              </div>
+             
             </div>
 
-            {/* Date */}
-            <div className="grid space-y-2 mt-4">
-              <Label name="date" label="Date" required={true} />
-              <DatePicker
-                selected={date}
-                className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                onChange={(date: Date | null) => setDate(date)}
-              />
-            </div>
-
-            {/* DESCRIPTION */}
-            <div className="grid space-y-2 mt-4">
-              <Label name="description" label="Description" required={false} />
-              <textarea
-                className="border border-gray-300 py-2 px-3 focus-visible:outline-primaryBlue"
-                id="description"
-                rows={5}
-                cols={5}
-              ></textarea>
-            </div>
+           
           </div>
 
-
-          {/* REGISTRATION FORM */}
-          <div className="mt-6">
-            <p className="w-full text-sm font-medium text-white bg-primaryBlue p-3">
-              Registration Information
-            </p>
-
-            {/* DOCTOR NAME & STAFF ON DUTY */}
-            <div className="grid grid-cols-2 gap-5 mt-4">
-              <div className="space-y-2">
-                <Label name="doctorName" label="Doctor" required={true} />
-                <input
-                  id="doctorName"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label
-                  name="staffOnDuty"
-                  label="Staff On Duty"
-                  required={true}
-                />
-                <input
-                  id="staffOnDuty"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
-              </div>
-            </div>
-
-            {/* WARD NO. & DATE */}
-            <div className="grid grid-cols-2 gap-5 mt-4 mb-6">
-              <div className="space-y-2">
-                <Label name="wardNo" label=" Ward No." required={true} />
-                <input
-                  id="wardNo"
-                  type="text"
-                  className="w-full border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                />
-              </div>
-              <div className="grid space-y-2">
-                <Label name="chooseDate" label="Choose Date" required={true} />
-                <DatePicker
-                  selected={chooseDate}
-                  className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
-                  onChange={(date: Date | null) => setChooseDate(date)}
-                />
-              </div>
-            </div>
-          </div>
           <Button type="submit">Submit</Button>
         </form>
       </div>

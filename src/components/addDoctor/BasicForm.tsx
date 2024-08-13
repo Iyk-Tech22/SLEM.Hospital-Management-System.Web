@@ -6,6 +6,7 @@ import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
 import { useForm } from "react-hook-form";
 import { IBasicForm } from "./models";
+
 import {
   sanitizeToLetters,
   sanitizeToPhoneNumber,
@@ -64,7 +65,7 @@ export default function BasicForm({
             {/* FIRST & LAST NAME */}
             <div className="grid md:grid-cols-2 gap-5 mt-4">
               <div className="space-y-2">
-                <Label name="firstName" label="First Name" required={true} />
+                <Label name="firstName" label="First Name" className="text-xs text-red-600" required={true} />
                 <input
                   {...register("firstName", {
                     required: "First name is required",
@@ -95,7 +96,7 @@ export default function BasicForm({
                 )}
               </div>
               <div className="space-y-2">
-                <Label name="lastName" label="Last Name" required={true} />
+                <Label name="lastName" label="Last Name" className="text-xs text-red-600" required={true} />
                 <input
                   {...register("lastName", {
                     required: "Last name is required",
@@ -130,7 +131,7 @@ export default function BasicForm({
             {/* PHONE & EMAIL */}
             <div className="grid md:grid-cols-2 gap-5 mt-4">
               <div className="space-y-2">
-                <Label name="email" label="Email" required={true} />
+                <Label name="email" label="Email" className="text-xs text-red-600"  required={true} />
                 <input
                   {...register("email", {
                     required: "Email is required",
@@ -149,7 +150,7 @@ export default function BasicForm({
                 )}
               </div>
               <div className="space-y-2">
-                <Label name="phone" label="Phone No." required={true} />
+                <Label name="phone" label="Phone No." className="text-xs text-red-600" required={true} />
                 <input
                   {...register("phone", {
                     required: "Phone number is required",
@@ -185,7 +186,7 @@ export default function BasicForm({
             {/* GENDER & AGE */}
             <div className="grid md:grid-cols-2 gap-5 mt-4">
               <div className="space-y-2">
-                <Label name="gender" label="Gender" required={true} />
+                <Label name="gender" label="Gender" className="text-xs text-red-600" required={true} />
                 <select
                   {...register("gender", {
                     required: "Gender is required",
@@ -205,7 +206,7 @@ export default function BasicForm({
               </div>
 
               <div className="space-y-2">
-                <Label name="age" label="Age" required={true} />
+                <Label name="age" label="Age" className="text-xs text-red-600" required={true} />
                 <input
                   {...register("age", {
                     required: "This field is required",
@@ -232,7 +233,7 @@ export default function BasicForm({
             {/* DATE OF BIRTH && SEPECIALTY */}
             <div className="grid md:grid-cols-2 gap-5 mt-4">
               <div className="grid space-y-2">
-                <Label name="dob" label="Date of Birth" required={true} />
+                <Label name="dob" label="Date of Birth" className="text-xs text-red-600"  required={true} />
                 <DatePicker
                   selected={dateOfBirth}
                   className="w-full cursor-pointer border border-gray-300 p-2 focus-visible:outline-primaryBlue"
@@ -247,7 +248,7 @@ export default function BasicForm({
 
               {/* SPECIALITY */}
               <div className="space-y-2">
-                <Label name="speciality" label="Speciality" required={true} />
+                <Label name="speciality" label="Speciality" className="text-xs text-red-600" required={true} />
                 <input
                   {...register("speciality", {
                     required: "Speciality name is required",
@@ -278,7 +279,7 @@ export default function BasicForm({
 
             {/* DESCRIPTION */}
             <div className="grid space-y-2 my-4">
-              <Label name="description" label="Description" required={false} />
+              <Label name="description" label="Description" className="text-xs text-red-600" required={false} />
               <textarea
                 className="border border-gray-300 py-2 px-3 focus-visible:outline-primaryBlue"
                 id="description"
