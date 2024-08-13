@@ -106,9 +106,8 @@ departmentName: yup
 .matches(/^[A-Za-z]+$/,"Department name must contain letters only"),
 doctor: yup
 .string()
-.required("Doctor name is required")
-.min(3,"Doctor name must be at least 3 characters")
-.matches(/^[A-Za-z]+$/,"Doctor name must contain letters only"),
+.oneOf(['0','1','2','3','4','5'], 'invalid name')
+.required('Head of department is required'),
 headDepartment: yup
 .string()
 .oneOf(['0','1','2','3','4','5'], 'invalid name')
