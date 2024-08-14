@@ -1,12 +1,13 @@
 import Button from "@/components/Button";
 import { useState, ChangeEvent} from "react";
 import Input from "@/components/Input";
+import Label from "../components/Label";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerPatientSchema } from "../components/addDoctor/formSchemas";
-import Label from "../components/Label";
+
 import {
   sanitizeToLetters,
   sanitizeToPhoneNumber,
