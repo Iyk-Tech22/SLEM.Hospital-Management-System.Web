@@ -117,6 +117,10 @@ status: yup
 .oneOf(['active','inactive'], 'invalid status')
 .required('Status is required'),
 })
+
+
+  
+
 // SOCIAL SCHEMA
 export const socialSchema = yup.object().shape({
   facebook: yup.string().url("Invalid URL"),
