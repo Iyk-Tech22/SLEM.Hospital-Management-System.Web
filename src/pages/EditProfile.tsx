@@ -101,7 +101,9 @@ function EditProfile({onCloseEditProfile}:{onCloseEditProfile:any}) {
   // };
 
   const { register, handleSubmit,reset,setValue,trigger, formState: { errors } } = useForm({
-    resolver: yupResolver(editProfileSchema)
+    resolver: yupResolver(editProfileSchema),
+        mode: "all",
+    reValidateMode: "onSubmit"
   });
   const onSubmit = data => {
     console.log("Form is about to be submitted");
@@ -401,7 +403,7 @@ function EditProfile({onCloseEditProfile}:{onCloseEditProfile:any}) {
           </Button>
           <Button
             type="submit"
-            styles="w-full md:w-auto bg-primaryBlue text-white hover:bg-primaryBlue/90 p-2"
+            styles="w-full md:w-auto mt-4 text-center border text-gray-700 py-2 px-3 rounded-md hover:bg-gray-200"
           >
             Cancel
           </Button>
