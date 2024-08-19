@@ -38,10 +38,15 @@ export interface IAppointments {
 }
 
 export interface IDoctorList {
-  profile: string;
-  doctorName: string;
+  profile?: string;
+  doctorName?: string;
   status?: Status;
   department?: string;
+  phone?:string;
+  email?:string;
+  patient?:string;
+  patientAge?:number;
+
 }
 
 export interface IDepartments {
@@ -143,36 +148,61 @@ const Doctors: IDoctorList[] = [
     doctorName: "Dr. Jenney Russell",
     department: "Urologist",
     status: Status.AVAILABLE,
+    phone:'091234576893',
+    email:'bessie.howard@example.com',
+    patient:'Samuel Jones',
+    patientAge:25,
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994712",
     doctorName: "Dr. Eduardo Hawkins",
     department: "Cardiologist",
     status: Status.ABSEND,
+    phone:'091294576893',
+    email:'edu.hawkins@example.com',
+    patient:'Samuel Jones',
+    patientAge:21,
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994713",
     doctorName: "Dr. Arlane Lane",
     department: "Dentist",
     status: Status.AVAILABLE,
+    phone:'09128457683',
+    email:'arlane.lane@example.com',
+    patient:'Peter John',
+    patientAge:28,
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994715",
     doctorName: "Dr. Ted Tones",
     department: "Psychiatrist",
     status: Status.ABSEND,
+    phone:'09128457643',
+    email:'ted.tones@example.com',
+    patient:'Collins Friday',
+    patientAge:31,
+  
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994716",
     doctorName: "Dr. Angel Lane",
     department: "Pediatrics",
     status: Status.AVAILABLE,
+    phone:'09128457893',
+    email:'angel.lane@example.com',
+    patient:'Mercy Jobs',
+    patientAge:36,
   },
   {
     profile: "https://i.pravatar.cc/60?u=4994717",
     doctorName: "Dr. Authur Miles",
     department: "Radiologist",
     status: Status.AVAILABLE,
+    phone:'09128467893',
+    email:'arther.miles@example.com',
+    patient:'Hellens Hoist',
+    patientAge:23,
   },
 ];
 
@@ -423,7 +453,6 @@ enum GenderEnum {
   female = "female",
   male = "male",
 }
-
 export {
   DashboardNavLinks,
   DashboardStats,
