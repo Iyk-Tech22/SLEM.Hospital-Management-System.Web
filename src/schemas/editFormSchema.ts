@@ -33,8 +33,8 @@ export const editProfileSchema = yup.object().shape({
       .test('is-11-digits','Phone number must be digits only',(value) => /^\d{1,11}$/.test(value))
       .min(11,"Phone number cannot be less than 11 digits")
       .max(11,"Phone number cannot exceeds 11 digits"),
-      facebook: yup.string().url("Invalid URL").required('Facebook profile link is required'),
-      twitter: yup.string().url("Invalid URL").required('Twitter profile link is required'),
-      instagram: yup.string().url("Invalid URL").required('Instagram profile link is required'),
-      linkedin: yup.string().url("Invalid URL").required('LinkedIn profile link is required'),
+      facebook: yup.string().url("Invalid URL"),
+      twitter: yup.string().url("Invalid URL"),
+      instagram: yup.string().url("Invalid URL"),
+      linkedin: yup.string().url("Invalid URL")
       })
