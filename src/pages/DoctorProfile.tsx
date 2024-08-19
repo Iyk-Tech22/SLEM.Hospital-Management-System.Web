@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { Doctors, Status } from "../data/constant";
 import { useParams } from "react-router-dom";
 
@@ -6,37 +6,35 @@ const status = Status.AVAILABLE;
 
 export default function DoctorProfile() {
   const { id } = useParams();
-  const [editProfile, setEditProfile] = useState(false);
+
   const SelectedID = Number(id);
   const doctors = Doctors;
 
-  function handleOpenEditProfile() {
-    setEditProfile(true);
-  }
+
   return (
-    <div className='w-full md:max-w-3xl md:mx-auto'>
+    <div className='w-full md:max-w-2xl md:mx-auto'>
       <div className='w-full overflow-hidden'>
-        {!editProfile && (
+    
           <div className='bg-white shadow-md rounded-md'>
             <div className='flex sm:flex-col sm:items-center px-6 py-4 md:py-8'>
               {doctors.map((doctorItem, index) => {
                 return SelectedID === index ? (
                   <DoctorListItems
                     doctorItem={doctorItem}
-                    onOpenEditProfile={handleOpenEditProfile}
+               
                     key={index}
                   />
                 ) : null;
               })}
             </div>
           </div>
-        )}
+       
       </div>
     </div>
   );
 }
 
-function DoctorListItems({ doctorItem, onOpenEditProfile }) {
+function DoctorListItems({ doctorItem }) {
   return (
     <div className='flex flex-col justify-center items-center'>
       <img
@@ -51,15 +49,6 @@ function DoctorListItems({ doctorItem, onOpenEditProfile }) {
         <h3 className='text-gray-500 text-xl font-semibold leading-tight'>
           {doctorItem.department}
         </h3>
-
-        <div className='mt-2'>
-          <button
-            onClick={() => onOpenEditProfile()}
-            className='ml-2 text-sm px-4 py-2 leading-none border rounded text-gray-700 bg-white hover:bg-gray-100'
-          >
-            Edit Profile
-          </button>
-        </div>
       </div>
       <div className='px-6 py-4'>
         <div className='flex items-center justify-between'>
@@ -74,10 +63,10 @@ function DoctorListItems({ doctorItem, onOpenEditProfile }) {
             </p>
           )}
         </div>
-        <hr className='w-full h-[1px] my-2' />
+        <hr className='w-full h-[1px] my-4' />
 
-        <div className='mt-2 text-xs grid grid-cols-2 md:grid-cols-[300px_150px_200px]  gap-4 text-primaryDarkBlue w-full'>
-          <div className='flex flex-col space-y-2 w-full'>
+        <div className='mt-2 text-xs grid grid-cols-1 md:grid-cols-1  gap-4 text-primaryDarkBlue w-full'>
+          <div className='flex flex-col md:flex-row md:space-x-4 w-full'>
             <div className='flex items-center flex-col space-x-2'>
               <div className='w-full'>
                 {" "}
