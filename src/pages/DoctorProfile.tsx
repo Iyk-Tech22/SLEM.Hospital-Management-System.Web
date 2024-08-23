@@ -16,7 +16,7 @@ export default function DoctorProfile() {
       <div className='w-full overflow-hidden'>
     
           <div className='bg-white shadow-md rounded-md'>
-            <div className='flex sm:flex-col sm:items-center px-6 py-4 md:py-8'>
+            <div className='flex sm:flex-col sm:items-center px-4 md:px-6 py-4 md:py-8'>
               {doctors.map((doctorItem, index) => {
                 return SelectedID === index ? (
                   <DoctorListItems
@@ -50,7 +50,7 @@ function DoctorListItems({ doctorItem }) {
           {doctorItem.department}
         </h3>
       </div>
-      <div className='px-6 py-4'>
+      <div className=' px-4 md:px-6 py-4'>
         <div className='flex items-center justify-between'>
           <h3 className='font-bold text-sm leading-tight'>About Me</h3>
           {status === doctorItem?.status ? (
@@ -63,24 +63,24 @@ function DoctorListItems({ doctorItem }) {
             </p>
           )}
         </div>
-        <hr className='w-full h-[1px] my-4' />
+        <hr className='w-full h-[1px] my-2' />
 
-        <div className='mt-2 text-xs grid grid-cols-1 md:grid-cols-1  gap-4 text-primaryDarkBlue w-full'>
-          <div className='flex flex-col md:flex-row md:space-x-4 w-full'>
-            <div className='flex items-center flex-col space-x-2'>
+        <div className='text-xs grid grid-cols-1 md:grid-cols-1  text-primaryDarkBlue w-full'>
+          <div className='flex flex-col w-full'>
+            <div className='flex items-center flex-col space-y-2'>
               <div className='w-full'>
                 {" "}
-                <h3 className='font-bold text-sm leading-tight mt-6'>
+                <h3 className='font-bold text-sm leading-tight mt-2'>
                   Contact Information
                 </h3>
-                <p>Phone: {doctorItem.phone}</p>
+                <p className="text-sm my-1">Phone: {doctorItem.phone}</p>
                 <p>Email: {doctorItem.email}</p>
               </div>
             </div>
 
             <div>
-              <h3 className='font-bold text-sm leading-tight mt-6'>Patients</h3>
-              <h4>{doctorItem.patient}</h4>
+              <h3 className='font-bold text-sm leading-tight mt-4'>Patients</h3>
+              <h4 className="text-sm my-1">{doctorItem.patient}</h4>
               <p>Age: {doctorItem.patientAge}</p>
             </div>
           </div>
