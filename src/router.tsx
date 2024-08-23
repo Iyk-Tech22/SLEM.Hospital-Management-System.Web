@@ -8,6 +8,7 @@ import DoctorsPage from "./pages/DoctorsPage";
 import AppointmentsPage from "./pages/AppointmentsPage";
 import DepartmentsPage from "./pages/DepartmentPage";
 import PatientsPage from "./pages/PatientsPage";
+import PatientProfilePage from "./pages/PatientProfilePage";
 import RegisterPatientPage from "./pages/RegisterPatientPage";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -53,6 +54,7 @@ export const router = createBrowserRouter([
           { index: true, element: <Navigate replace to="all-patients" /> },
           { path: "all-patients", element: <PatientsPage /> },
           { path: "add-patient", element: <RegisterPatientPage /> },
+          { path: "patient-profile/:id", element: <PatientProfilePage /> },
         ],
       },
       {
