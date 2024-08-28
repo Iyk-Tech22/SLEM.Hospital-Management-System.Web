@@ -1,9 +1,22 @@
 import { useParams } from "react-router-dom";
 import { Patients } from "../data/constant";
+import { FaAngleRight } from "react-icons/fa6";
+
+import { useNavigate } from "react-router-dom";
 export default function PatientProfilePage(){
+  const navigate = useNavigate();
     const patient = Patients;
+    
     const { id } = useParams();
     const SelectedID = Number(id);
+    function handleClick(e,index){
+      navigate(`/account/patients/patient-profile/${index}/update-medical`);
+      e.stopPropagation();
+
+      
+
+    }
+    // console.log(cardContent);
     return <div className='w-full '>
         <div className='w-full overflow-hidden mx-auto'>
     <h1 className="font-bold text-xl leading-tight tracking-wide px-6 text-center">Patient Information</h1>
@@ -13,8 +26,9 @@ export default function PatientProfilePage(){
  
 <div className='py-4 md:py-8'> 
 {patient.map((item,index)=>{
-    return SelectedID === index ? <div className="w-full md:w-[55%] grid grid-cols-1 space-y-4 mx-auto">
-    <Card key={item.patientID} >
+
+    return SelectedID === index ? <div className="w-full md:w-[55%] grid grid-cols-1 space-y-4 mx-auto" key={index}>
+    <Card >
 <img
 src={item.profile}
 alt={item.name}
@@ -49,16 +63,21 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
 </InnerCard>
     </Card>
     <Card >
-      <h1 className="mt-4 py-4 ml-4 font-bold text-xl leading-tight">Medical History</h1>
+      <div className="mt-4 px-4 flex justify-between w-full items-center">
+      <h1 className="font-bold text-xl leading-tight">Medical History</h1>
+
+ <FaAngleRight className="text-lg font-semibold cursor-pointer"  onClick={(e)=>handleClick(e,index)}/>
+      </div>
+  
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
 <h3 className="font-bold text-sm leading-tight tracking-wide">Allegies</h3>
-<p className="text-sm leading-tight capitalize tracking-wide">{item.allegies}</p>
+<p className="text-sm leading-tight capitalize tracking-wide">{item.allegies.join(', ')}</p>
 </div>
 <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
 <h3 className="font-bold text-sm leading-tight  tracking-wide">Chronic Conditions</h3>
-<p className="text-sm leading-tight capitalize tracking-wide">{item.chronicConditions}</p>
+<p className="text-sm leading-tight capitalize tracking-wide">{item.chronicConditions.join(', ')}</p>
 </div>
 <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
 <h3 className="font-bold text-sm leading-tight  tracking-wide">Previous Surgeries</h3>
@@ -76,7 +95,11 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
     </Card>
 
     <Card >
-      <h1 className="mt-4 py-4 ml-4 font-bold text-xl leading-tight">Current Visit Details</h1>
+    <div className="mt-4 px-4 flex justify-between w-full items-center">
+      <h1 className="font-bold text-xl leading-tight">Current Visit Details</h1>
+      <FaAngleRight className="text-lg font-semibold"/>
+      </div>
+  
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
@@ -85,11 +108,11 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
 </div>
 <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
 <h3 className="font-bold text-sm leading-tight  tracking-wide">Symptoms</h3>
-<p className="text-sm leading-tight capitalize tracking-wide">{item.symptoms}</p>
+<p className="text-sm leading-tight capitalize tracking-wide">{item.symptoms.join(', ')}</p>
 </div>
 <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
 <h3 className="font-bold text-sm leading-tight  tracking-wide">Vital Signs</h3>
-<p className="text-sm leading-tight capitalize tracking-wide">{item.vitalSigns} 
+<p className="text-sm leading-tight capitalize tracking-wide">{item.vitalSigns.join(', ')} 
 </p>
 </div>
 <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
@@ -104,7 +127,11 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
       </InnerCard>
     </Card>
     <Card >
-      <h1 className="mt-4 py-4 ml-4 font-bold text-xl leading-tight">Appointments</h1>
+    <div className="mt-4 px-4 flex justify-between w-full items-center">
+      <h1 className="font-bold text-xl leading-tight">Appointments</h1>
+      <FaAngleRight className="text-lg font-semibold"/>
+      </div>
+ 
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
@@ -119,7 +146,11 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
       </InnerCard>
     </Card>
     <Card >
-      <h1 className="mt-4 py-4 ml-4 font-bold text-xl leading-tight">Lab Results</h1>
+    <div className="mt-4 px-4 flex justify-between w-full items-center">
+      <h1 className="font-bold text-xl leading-tight">Lab Results</h1>
+      <FaAngleRight className="text-lg font-semibold"/>
+      </div>
+    
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
@@ -134,7 +165,10 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
       </InnerCard>
     </Card>
     <Card >
-      <h1 className="mt-4 py-4 ml-4 font-bold text-xl leading-tight">Prescriptions</h1>
+    <div className="mt-4 px-4 flex justify-between w-full items-center">
+      <h1 className="font-bold text-xl leading-tight">Prescriptions</h1>
+      <FaAngleRight className="text-lg font-semibold"/>
+      </div>
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
@@ -149,7 +183,11 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
       </InnerCard>
     </Card>
     <Card >
-      <h1 className="mt-4 py-4 ml-4 font-bold text-xl leading-tight">Immunization Records</h1>
+    <div className="mt-4 px-4 flex justify-between w-full items-center">
+      <h1 className="font-bold text-xl leading-tight">Immunization Records</h1>
+      <FaAngleRight className="text-lg font-semibold"/>
+      </div>
+    
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
@@ -161,7 +199,11 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
       </InnerCard>
     </Card>
     <Card >
-      <h1 className="mt-4 py-4 ml-4 font-bold text-xl leading-tight">Notes and Observations</h1>
+    <div className="mt-4 px-4 flex justify-between w-full items-center">
+      <h1 className="font-bold text-xl leading-tight">Notes and Observations</h1>
+      <FaAngleRight className="text-lg font-semibold"/>
+      </div>
+  
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
@@ -177,7 +219,10 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
       </InnerCard>
     </Card>
     <Card >
-      <h1 className="mt-4 py-4 ml-4 font-bold text-xl leading-tight">Billing Information</h1>
+    <div className="mt-4 px-4 flex justify-between w-full items-center">
+      <h1 className="font-bold text-xl leading-tight">Billing Information</h1>
+      <FaAngleRight className="text-lg font-semibold"/>
+      </div>
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
@@ -197,7 +242,10 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
       </InnerCard>
     </Card>
     <Card >
-      <h1 className="mt-4 py-4 ml-4 font-bold text-xl leading-tight">Emergency Contacts</h1>
+    <div className="mt-4 px-4 flex justify-between w-full items-center">
+      <h1 className="font-bold text-xl leading-tight">Emergency Contacts</h1>
+      <FaAngleRight className="text-lg font-semibold"/>
+      </div>
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
@@ -214,7 +262,11 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
       </InnerCard>
     </Card>
     <Card >
-      <h1 className="mt-4 py-4 ml-4 font-bold text-xl leading-tight">Consent Forms</h1>
+    <div className="mt-4 px-4 flex justify-between w-full items-center">
+      <h1 className="font-bold text-xl leading-tight">Consent Forms</h1>
+      <FaAngleRight className="text-lg font-semibold"/>
+      </div>
+
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
@@ -231,7 +283,10 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
       </InnerCard>
     </Card>
     <Card >
-      <h1 className="mt-4 py-4 ml-4 font-bold text-xl leading-tight">Document and Attachments</h1>
+    <div className="mt-4 px-4 flex justify-between w-full items-center">
+      <h1 className="font-bold text-xl leading-tight">Document and Attachments</h1>
+      <FaAngleRight className="text-lg font-semibold"/>
+      </div>
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
@@ -259,7 +314,7 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
 
 function Card({children}){
 return <div  className='bg-white shadow-md rounded-md w-full '>
-  <div className="flex flex-col justify-start items-start mt-4 w-full">
+  <div className="flex flex-col justify-start items-start mt-4 w-full" >
   {children}
   </div>
 </div>
