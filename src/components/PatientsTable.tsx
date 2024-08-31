@@ -38,7 +38,7 @@ export function PatientsTable({
         {patients.map((patient,index) => (
             // calling it onClick for the onRowClick will cause a conflict on the onClick event
             <TableRow key={patient.name} onRowClick={()=>handlePatientClick(index)} index={patientIndex}  ref={ref} >
-            <TableCell className="font-medium">
+            <TableCell className="font-medium ">
               <img
                 className="rounded-full"
                 src={patient.profile}

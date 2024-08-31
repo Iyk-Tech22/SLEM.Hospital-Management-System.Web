@@ -9,14 +9,70 @@ export default function PatientProfilePage(){
     
     const { id } = useParams();
     const SelectedID = Number(id);
-    function handleClick(e,index){
+    function handleMedicalClick(e,index){
       navigate(`/account/patients/patient-profile/${index}/update-medical`);
       e.stopPropagation();
 
       
 
     }
-    // console.log(cardContent);
+    function handleVisitClick(e,index){
+      navigate(`/account/patients/patient-profile/${index}/update-visit`);
+      e.stopPropagation();
+
+      
+
+    }
+    function handleAppointClick(e,index){
+      navigate(`/account/patients/patient-profile/${index}/update-appointment`);
+      e.stopPropagation();
+
+      
+
+    }
+    function handleLabClick(e,index){
+      navigate(`/account/patients/patient-profile/${index}/lab-result`);
+      e.stopPropagation();
+
+      
+
+    }
+    function handleImmuneClick(e,index){
+      navigate(`/account/patients/patient-profile/${index}/immunization-record`);
+      e.stopPropagation();
+
+      
+
+    }
+    function handleNotesObervationClick(e,index){
+      navigate(`/account/patients/patient-profile/${index}/notes-observations`);
+      e.stopPropagation();
+
+      
+
+    }
+    function handlePrecriptionClick(e,index){
+      navigate(`/account/patients/patient-profile/${index}/precriptions`);
+      e.stopPropagation();
+
+      
+
+    }
+    function handleBillingClick(e,index){
+      navigate(`/account/patients/patient-profile/${index}/billing-information`);
+      e.stopPropagation();
+
+      
+
+    }
+    function handleContactClick(e,index){
+      navigate(`/account/patients/patient-profile/${index}/emergency-contacts`);
+      e.stopPropagation();
+
+      
+
+    }
+ 
     return <div className='w-full '>
         <div className='w-full overflow-hidden mx-auto'>
     <h1 className="font-bold text-xl leading-tight tracking-wide px-6 text-center">Patient Information</h1>
@@ -66,7 +122,7 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
       <div className="mt-4 px-4 flex justify-between w-full items-center">
       <h1 className="font-bold text-xl leading-tight">Medical History</h1>
 
- <FaAngleRight className="text-lg font-semibold cursor-pointer"  onClick={(e)=>handleClick(e,index)}/>
+ <FaAngleRight className="text-lg font-semibold cursor-pointer"  onClick={(e)=>handleMedicalClick(e,index)}/>
       </div>
   
       <hr className="w-full h-[1px] my-6" />
@@ -97,7 +153,7 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
     <Card >
     <div className="mt-4 px-4 flex justify-between w-full items-center">
       <h1 className="font-bold text-xl leading-tight">Current Visit Details</h1>
-      <FaAngleRight className="text-lg font-semibold"/>
+      <FaAngleRight className="text-lg font-semibold cursor-pointer" onClick={(e)=>handleVisitClick(e,index)}/>
       </div>
   
       <hr className="w-full h-[1px] my-6" />
@@ -129,7 +185,7 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
     <Card >
     <div className="mt-4 px-4 flex justify-between w-full items-center">
       <h1 className="font-bold text-xl leading-tight">Appointments</h1>
-      <FaAngleRight className="text-lg font-semibold"/>
+      <FaAngleRight className="text-lg font-semibold cursor-pointer" onClick={(e)=>handleAppointClick(e,index)}/>
       </div>
  
       <hr className="w-full h-[1px] my-6" />
@@ -148,18 +204,18 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
     <Card >
     <div className="mt-4 px-4 flex justify-between w-full items-center">
       <h1 className="font-bold text-xl leading-tight">Lab Results</h1>
-      <FaAngleRight className="text-lg font-semibold"/>
+      <FaAngleRight className="text-lg font-semibold cursor-pointer" onClick={(e)=>handleLabClick(e,index)}/>
       </div>
     
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
 <h3 className="font-bold text-sm leading-tight tracking-wide">Recent Lab Tests</h3>
-<p className="text-sm leading-tight capitalize tracking-wide">{item.recentLabTests}</p>
+<p className="text-sm leading-tight capitalize tracking-wide">{item.recentLabTest} ({item.recentLabResult})</p>
 </div>
 <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
 <h3 className="font-bold text-sm leading-tight  tracking-wide">Historical Lab</h3>
-<p className="text-sm leading-tight capitalize tracking-wide">{item.historicalLabResults}</p>
+<p className="text-sm leading-tight capitalize tracking-wide">{item.historicalLabTest} ({item.historicalLabResult})</p>
 </div>
 
       </InnerCard>
@@ -167,17 +223,17 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
     <Card >
     <div className="mt-4 px-4 flex justify-between w-full items-center">
       <h1 className="font-bold text-xl leading-tight">Prescriptions</h1>
-      <FaAngleRight className="text-lg font-semibold"/>
+      <FaAngleRight className="text-lg font-semibold cursor-pointer" onClick={(e)=>handlePrecriptionClick(e,index)}/>
       </div>
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
 <h3 className="font-bold text-sm leading-tight tracking-wide">Current Prescriptions</h3>
-<p className="text-sm leading-tight capitalize tracking-wide">{item.currentPrecription}</p>
+<p className="text-sm leading-tight capitalize tracking-wide">{item.currentPrecription} ({item.currentDosage} - {item.currentFrequency})</p>
 </div>
 <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
 <h3 className="font-bold text-sm leading-tight  tracking-wide">Prescription History</h3>
-<p className="text-sm leading-tight capitalize tracking-wide">{item.precriptionHistory}</p>
+<p className="text-sm leading-tight capitalize tracking-wide">{item.precriptionHistory} ({item.prescriptionHistoryDosage} - {item.precriptionHistoryFrequency})</p>
 </div>
 
       </InnerCard>
@@ -185,7 +241,7 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
     <Card >
     <div className="mt-4 px-4 flex justify-between w-full items-center">
       <h1 className="font-bold text-xl leading-tight">Immunization Records</h1>
-      <FaAngleRight className="text-lg font-semibold"/>
+      <FaAngleRight className="text-lg font-semibold cursor-pointer" onClick={(e)=>handleImmuneClick(e,index)}/>
       </div>
     
       <hr className="w-full h-[1px] my-6" />
@@ -201,7 +257,7 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
     <Card >
     <div className="mt-4 px-4 flex justify-between w-full items-center">
       <h1 className="font-bold text-xl leading-tight">Notes and Observations</h1>
-      <FaAngleRight className="text-lg font-semibold"/>
+      <FaAngleRight className="text-lg font-semibold cursor-pointer" onClick={(e)=>handleNotesObervationClick(e,index)}/>
       </div>
   
       <hr className="w-full h-[1px] my-6" />
@@ -221,13 +277,13 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
     <Card >
     <div className="mt-4 px-4 flex justify-between w-full items-center">
       <h1 className="font-bold text-xl leading-tight">Billing Information</h1>
-      <FaAngleRight className="text-lg font-semibold"/>
+      <FaAngleRight className="text-lg font-semibold cursor-pointer" onClick={(e)=>handleBillingClick(e,index)}/>
       </div>
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>
       <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
 <h3 className="font-bold text-sm leading-tight tracking-wide">Insurance Details</h3>
-<p className="text-sm leading-tight capitalize tracking-wide">{item.insuranceDetails}</p>
+<p className="text-sm leading-tight capitalize tracking-wide">{item.insuranceProvider}. - {item.issurancePolicyNumber}</p>
 </div>
 <div className="grid grid-cols-[100px,1fr] gap-4 odd:bg-gray-200 even:bg-white p-4">
 <h3 className="font-bold text-sm leading-tight tracking-wide">Billing History</h3>
@@ -244,7 +300,7 @@ className='mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full self-center'
     <Card >
     <div className="mt-4 px-4 flex justify-between w-full items-center">
       <h1 className="font-bold text-xl leading-tight">Emergency Contacts</h1>
-      <FaAngleRight className="text-lg font-semibold"/>
+      <FaAngleRight className="text-lg font-semibold cursor-pointer" onClick={(e)=>handleContactClick(e,index)}/>
       </div>
       <hr className="w-full h-[1px] my-6" />
       <InnerCard>

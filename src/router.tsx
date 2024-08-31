@@ -19,6 +19,14 @@ import AuthLayout from "./layouts/AuthLayout";
 import Profile from "./pages/ProfilePage";
 import AccountSettings from "./pages/AccountSetting";
 import DoctorProfile from "./pages/DoctorProfile";
+import UpdateCurrentVisitDetails from "./pages/UpdateCurrentVisitDetails";
+import UpdateAppointment from './pages/UpdateAppointment'
+import LabResultDetail from './pages/LabResultDetail'
+import ImmunizationRecordDetail from "./pages/ImmunizationRecordDetail";
+import NotesObservations from "./pages/NotesObservations";
+import PrecriptionsDetail from "./pages/PrecriptionsDetail";
+import BillingDetail from "./pages/BillingDetail";
+import EmergencyContactDetail from "./pages/EmergencyContactDetail";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +65,14 @@ export const router = createBrowserRouter([
           { path: "add-patient", element: <RegisterPatientPage /> },
           { path: "patient-profile/:id", element: <PatientProfilePage /> },
           { path: "patient-profile/:id/update-medical", element: <UpdateMedicalHistory /> },
+          { path: "patient-profile/:id/update-visit", element: <UpdateCurrentVisitDetails /> },
+          { path: "patient-profile/:id/update-appointment", element: <UpdateAppointment /> },
+          { path: "patient-profile/:id/lab-result", element: <LabResultDetail /> },
+          { path: "patient-profile/:id/immunization-record", element: <ImmunizationRecordDetail /> },
+          { path: "patient-profile/:id/notes-observations", element: <NotesObservations /> },
+          { path: "patient-profile/:id/precriptions", element: <PrecriptionsDetail /> },
+          { path: "patient-profile/:id/billing-information", element: <BillingDetail /> },
+          { path: "patient-profile/:id/emergency-contacts", element: <EmergencyContactDetail /> },
         ],
       },
       {

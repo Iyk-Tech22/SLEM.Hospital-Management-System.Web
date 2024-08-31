@@ -38,3 +38,60 @@ export const editProfileSchema = yup.object().shape({
       instagram: yup.string().url("Invalid URL"),
       linkedin: yup.string().url("Invalid URL")
       })
+
+// EDIT MEDICAL HISTORY DETAILS
+export const editMedicalHistory = yup.object().shape({
+  allergies: yup
+    .string()
+    .required("Allergies are required")
+    .min(3, "Allergies must be at least 3 characters"),
+    chronicConditions: yup
+    .string()
+    .required("Chronic Conditions are required")
+    .min(3, "Chronic Conditions must be at least 3 characters"),
+   
+    previousSurgeries: yup
+    .string()
+    .required("Previous surgeries are required")
+    .min(3, "Previous surgeries must be at least 3 characters"),
+
+    currentMedications: yup
+    .string()
+    .required("Current medications are required")
+    .min(3, "Current medications must be at least 3 characters"),
+
+    familyMedicalHistory: yup
+    .string()
+    .required("Family medical history are required")
+    .min(3, "Family medical history must be at least 3 characters")
+
+});
+
+// EDIT CURRENT VISIT DETAILS
+
+export const editCurrentVisitDetails = yup.object().shape({
+  reasonForVisit: yup
+    .string()
+    .required("Reason for visit are required")
+    .min(3, "Reason for visit must be at least 3 characters"),
+    symptoms: yup
+    .string()
+    .required("Symptons are required")
+    .min(3, "Symptoms must be at least 3 characters"),
+   
+    vitalSigns: yup
+    .string()
+    .required("Vital signs are required")
+    .min(3, "Vital signs must be at least 3 characters"),
+
+    diagnosis: yup
+    .string()
+    .required("Diagnosis are required")
+    .min(3, "Diagnosis must be at least 3 characters"),
+
+    treatmentPlan: yup
+    .string()
+    .required("Treatment plan are required")
+    .min(3, "Treatment plan must be at least 3 characters")
+
+});

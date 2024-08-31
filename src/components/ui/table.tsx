@@ -67,7 +67,7 @@ const TableRow = React.forwardRef<HTMLTableRowElement,TableRowProps>(
       <tr
         ref={ref}
         className={cn(
-          "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted w-full",
+          "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted w-full cursor-pointer",
           className
         )}
         onClick={handleClick}
