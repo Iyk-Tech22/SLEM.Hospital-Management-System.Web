@@ -118,7 +118,46 @@ status: yup
 .required('Status is required'),
 })
 
+// ADD NEW PRESCRIPTION
+export const addNewPrescription =  yup.object().shape({
 
+  medication: yup
+  .string()
+  .required("Medication is required")
+  .min(3,"Medication must be at least 3 characters")
+  .matches(/^[A-Za-z]+$/,"Medication must contain letters only"),
+  dosage: yup
+  .string()
+  .required("Dosage is required")
+  .min(3,"Dosage must be at least 3 characters")
+  .matches(/^[A-Za-z0-9]+$/,"Dosage must contain numbers and letters only"),
+  frequency: yup
+  .string()
+  .required("Frequency is required")
+  .min(3,"Frequency must be at least 3 characters")
+  .matches(/^[A-Za-z]+$/,"Frequency must contain letters only"),
+})
+
+// ADD A NEW EMERGENCY fCONTACT
+export const addNewContact =  yup.object().shape({
+
+  name: yup
+  .string()
+  .required("Name is required")
+  .min(3,"Name must be at least 3 characters")
+  .matches(/^[A-Za-z]+$/,"Name must contain letters only"),
+  relationship: yup
+  .string()
+  .required("Relationship is required")
+  .min(3,"Relationship must be at least 3 characters")
+  .matches(/^[A-Za-z]+$/,"Relationship must contain letters only"),
+  phone:yup
+  .string()
+  .required("Contact number is required")
+  .test('is-11-digits','Phone number must be digits only',(value) => /^\d{1,11}$/.test(value))
+  .min(11,"Contact number cannot be less than 11 digits")
+  .max(11,"Contact number cannot exceeds 11 digits"),
+})
   
 
 // SOCIAL SCHEMA
