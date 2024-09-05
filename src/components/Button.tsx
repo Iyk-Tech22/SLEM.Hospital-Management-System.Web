@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 
 interface ButtonProps {
     children: ReactNode; // Accepts anything renderable in React (string, JSX, etc.)
-    onClick: MouseEventHandler<HTMLButtonElement>; // Correctly typed onClick handler
+    onClick?: MouseEventHandler<HTMLButtonElement>; // Correctly typed onClick handler
     styles?: string; // Optional styles as a string
     type?: "button" | "submit" | "reset"; // Optional button types
   }

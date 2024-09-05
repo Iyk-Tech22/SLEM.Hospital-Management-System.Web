@@ -1,7 +1,7 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 interface TableRowProps extends React.HTMLAttributes<HTMLTableRowElement> {
-  index: React.MutableRefObject<number>;
+  index?: React.MutableRefObject<number>;
   onRowClick?: (index: React.MutableRefObject<number>) => void;
    // Use index or ID as parameter
 }
