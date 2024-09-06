@@ -1,4 +1,4 @@
-import {  useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { Patients } from "../data/constant";
 import Button from "@/components/Button";
 // import Input from "@/components/Input";
@@ -11,6 +11,7 @@ import React, {  useEffect } from "react";
 
 
 export default function UpdateMedicalHistory() {
+  const navigate = useNavigate();
     const { id } = useParams();
     const selectedID = Number(id);
     const medicalHistoryPatient = Patients; 
@@ -19,6 +20,7 @@ export default function UpdateMedicalHistory() {
       resolver: yupResolver(editMedicalHistory),
       mode: "all"
     });
+    
   
     useEffect(() => {
       if (selectedID !== null) {
@@ -38,9 +40,12 @@ export default function UpdateMedicalHistory() {
     const onSubmit = data => {
       console.log("Form is about to be submitted");
       console.log(data);
+      handleCancelClick()
       // Handle form submission logic here
     };
-  
+    const handleCancelClick = () =>{
+      navigate(`/account/patients/patient-profile/${selectedID}`);
+    }
     return (
       <div>
         {medicalHistoryPatient.map((item, index) => {
@@ -140,6 +145,7 @@ export default function UpdateMedicalHistory() {
               <Button
             type="submit"
             styles="w-full md:w-auto mt-4 text-center border text-gray-700 py-2 px-3 rounded-md hover:bg-gray-200"
+       
           >
             Cancel
           </Button>

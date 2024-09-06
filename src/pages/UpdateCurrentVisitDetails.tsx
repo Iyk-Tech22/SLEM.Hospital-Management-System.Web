@@ -1,4 +1,4 @@
-import {  useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { Patients } from "../data/constant";
 import Button from "@/components/Button";
 // import Input from "@/components/Input";
@@ -11,6 +11,8 @@ import React, {  useEffect } from "react";
 
 
 export default function UpdateCurrentVisitDetails() {
+  const navigate = useNavigate();
+  
     const { id } = useParams();
     const selectedID = Number(id);
     const currentVisitDetails = Patients; 
@@ -38,8 +40,12 @@ export default function UpdateCurrentVisitDetails() {
     const onSubmit = data => {
       console.log("Form is about to be submitted");
       console.log(data);
+      handleCancelClick()
       // Handle form submission logic here
     };
+    const handleCancelClick = () =>{
+      navigate(`/account/patients/patient-profile/${selectedID}`);
+    }
   
     return (
       <div>
