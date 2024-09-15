@@ -24,7 +24,7 @@ export default function ImmunizationRecordDetail() {
             </div>
      
        
-            <div className="absolute bottom-0 md:bottom-52 w-full flex justify-center items-center mb-6">
+            <div className="absolute bottom-0 md:bottom-0 w-full flex justify-center items-center mb-6">
         <button
           type="submit"
           className="w-full px-4 text-lg md:w-auto bg-primaryBlue text-white hover:bg-primaryBlue/90 py-4  px-12 flex justify-center items-center rounded-md"

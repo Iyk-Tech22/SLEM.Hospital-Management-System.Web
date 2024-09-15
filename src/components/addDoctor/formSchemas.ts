@@ -25,6 +25,7 @@ export const loginSchema  = yup.object().shape({
       /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,}$/,
       "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character"
     ),
+  
   })
 
 // SIGNUP SCHEMA
@@ -38,6 +39,25 @@ export const signUpSchema  = yup.object().shape({
       /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,}$/,
       "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character"
     ),
+    phoneNumber: yup 
+    .string()
+    .required("Phone number is required")
+    .test('is-11-digits','Phone number must be digits only',(value) => /^\d{1,11}$/.test(value))
+    .min(11,"Phone number cannot be less than 11 digits")
+    .max(11,"Phone number cannot exceeds 11 digits"),
+    firstName:yup
+    .string()
+    .required("First name is required")
+    .min(3,"First name must be at least 3 characters")
+    .matches(/^[A-Za-z]+$/,"First name must contain letters only"),
+    lastName: yup
+    .string()
+    .required("Last name is required")
+    .min(3,"Last name must be at least 3 characters")
+    .matches(/^[A-Za-z]+$/,"Last name must contain letters only"),
+    username: yup.string().required("Username is required"),
+
+
   })
 
 // REGISTER PATIENT SCHEMA

@@ -404,6 +404,7 @@ function EditProfile({onCloseEditProfile}:{onCloseEditProfile:any}) {
           <Button
             type="submit"
             styles="w-full md:w-auto mt-4 text-center border text-gray-700 py-2 px-3 rounded-md hover:bg-gray-200"
+            onClick={onCloseEditProfile}
           >
             Cancel
           </Button>
